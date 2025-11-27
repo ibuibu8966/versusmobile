@@ -23,17 +23,17 @@ export default function HomePage() {
           }}></div>
         </div>
 
-        {/* 背景ロゴ - 中央配置 */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] z-0">
+        {/* 背景ロゴ - メインデザイン */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[800px] sm:h-[800px] md:w-[1000px] md:h-[1000px] lg:w-[1200px] lg:h-[1200px] z-0">
           <Image
             src="/images/versus-logo.jpg"
-            alt=""
-            width={900}
-            height={900}
-            className="w-full h-full object-contain opacity-10"
+            alt="VERSUS MOBILE Logo"
+            width={1200}
+            height={1200}
+            className="w-full h-full object-contain opacity-40 drop-shadow-[0_0_80px_rgba(255,0,102,0.6)]"
             priority
           />
-          <div className="absolute inset-0 bg-[#ff0066]/10 rounded-full blur-[200px] animate-pulse"></div>
+          <div className="absolute inset-0 bg-[#ff0066]/30 rounded-full blur-[250px] animate-pulse"></div>
         </div>
 
         {/* Radial glow */}
