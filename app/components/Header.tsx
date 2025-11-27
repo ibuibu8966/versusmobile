@@ -13,16 +13,18 @@ export default function Header() {
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20 max-w-[1400px] mx-auto">
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0 gap-2 sm:gap-3">
-            <Image
-              src="/images/versus-logo.jpg"
-              alt="VERSUS MOBILE"
-              width={40}
-              height={40}
-              className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12"
-            />
+            <div className="relative">
+              <Image
+                src="/images/versus-logo.jpg"
+                alt="VERSUS MOBILE"
+                width={48}
+                height={48}
+                className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain drop-shadow-[0_0_15px_rgba(255,0,102,0.6)]"
+              />
+            </div>
             <div className="font-bold whitespace-nowrap">
-              <span className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl">VERSUS</span>
-              <span className="text-[#ff0066] ml-1 sm:ml-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">MOBILE</span>
+              <span className="text-white text-base sm:text-xl md:text-2xl lg:text-3xl">VERSUS</span>
+              <span className="text-[#ff0066] ml-1 sm:ml-2 text-base sm:text-xl md:text-2xl lg:text-3xl">MOBILE</span>
             </div>
           </Link>
 

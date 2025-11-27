@@ -30,16 +30,16 @@ export default function HomePage() {
           <div className="text-center">
             {/* ロゴ画像 */}
             <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="relative">
+              <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64">
                 <Image
                   src="/images/versus-logo.jpg"
                   alt="VERSUS MOBILE"
-                  width={200}
-                  height={200}
-                  className="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 drop-shadow-[0_0_30px_rgba(255,0,102,0.8)]"
+                  width={256}
+                  height={256}
+                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,0,102,0.8)]"
                   priority
                 />
-                <div className="absolute inset-0 bg-[#ff0066]/20 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute inset-0 bg-[#ff0066]/20 blur-xl animate-pulse -z-10"></div>
               </div>
             </div>
 
