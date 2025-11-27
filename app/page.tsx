@@ -30,10 +30,10 @@ export default function HomePage() {
             alt="VERSUS MOBILE Logo"
             width={1200}
             height={1200}
-            className="w-full h-full object-contain opacity-40 drop-shadow-[0_0_80px_rgba(255,0,102,0.6)]"
+            className="w-full h-full object-contain opacity-70 drop-shadow-[0_0_100px_rgba(255,0,102,0.9)]"
             priority
           />
-          <div className="absolute inset-0 bg-[#ff0066]/30 rounded-full blur-[250px] animate-pulse"></div>
+          <div className="absolute inset-0 bg-[#ff0066]/50 rounded-full blur-[300px] animate-pulse"></div>
         </div>
 
         {/* Radial glow */}
