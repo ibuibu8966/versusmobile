@@ -44,7 +44,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
               <h1 className="text-xl font-bold text-white">
-                buppan mobile 管理画面
+                VERSUS MOBILE 管理画面
               </h1>
               <nav className="flex space-x-4">
                 <Link
