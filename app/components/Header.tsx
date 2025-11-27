@@ -14,7 +14,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0 gap-2 sm:gap-3">
             <Image
-              src="/images/versus-logo.png"
+              src="/images/versus-logo.jpg"
               alt="VERSUS MOBILE"
               width={40}
               height={40}

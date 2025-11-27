@@ -32,7 +32,7 @@ export default function HomePage() {
             <div className="flex justify-center mb-6 sm:mb-8">
               <div className="relative">
                 <Image
-                  src="/images/versus-logo.png"
+                  src="/images/versus-logo.jpg"
                   alt="VERSUS MOBILE"
                   width={200}
                   height={200}
