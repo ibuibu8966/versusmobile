@@ -10,9 +10,9 @@ export default function MyPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="flex flex-col items-center justify-center min-h-[60vh]">
             {/* 準備中アイコン */}
-            <div className="w-24 h-24 mb-8 rounded-full bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/10 border-2 border-[#d4af37]/50 flex items-center justify-center">
+            <div className="w-24 h-24 mb-8 rounded-full bg-gradient-to-br from-[#ff0066]/30 to-[#ff0066]/10 border-2 border-[#ff0066]/50 flex items-center justify-center">
               <svg
-                className="w-12 h-12 text-[#d4af37]"
+                className="w-12 h-12 text-[#ff0066]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -38,7 +38,7 @@ export default function MyPage() {
             {/* トップページに戻るボタン */}
             <a
               href="/"
-              className="px-8 py-4 bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-[#d4af37]/50 transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-4 bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-[#ff0066]/50 transition-all duration-300 transform hover:scale-105"
             >
               トップページに戻る
             </a>

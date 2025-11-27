@@ -10,38 +10,38 @@ export default function LegalPage() {
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-3xl sm:text-4xl font-bold mb-8">
             <span className="text-white">特定商取引法に基づく</span>
-            <span className="text-[#d4af37]">表記</span>
+            <span className="text-[#ff0066]">表記</span>
           </h1>
 
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8">
             <div className="space-y-8 text-white/80">
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">販売業者</h2>
-                <p>合同会社ピーチ（BUPPAN MOBILE運営）</p>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">販売業者</h2>
+                <p>合同会社ピーチ（VERSUS MOBILE運営）</p>
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">代表責任者</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">代表責任者</h2>
                 <p>宮崎　忍</p>
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">所在地</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">所在地</h2>
                 <p>〒290-0242</p>
                 <p>千葉県市原市荻作530-4</p>
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">電話番号</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">電話番号</h2>
                 <p>050-8890-8892（平日10:00-18:00）</p>
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">メールアドレス</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">メールアドレス</h2>
                 <p>
                   <a
                     href="mailto:peach.2023.7.19@gmail.com"
-                    className="text-[#d4af37] hover:text-[#f0d970] transition-colors"
+                    className="text-[#ff0066] hover:text-[#ff3399] transition-colors"
                   >
                     peach.2023.7.19@gmail.com
                   </a>
@@ -49,7 +49,7 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">販売価格</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">販売価格</h2>
                 <p>各プラン料金表に記載（税込価格）</p>
                 <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
                   <li>標準プラン: 1GB 880円 〜 100GB目安 4,580円/月</li>
@@ -59,7 +59,7 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">商品代金以外の必要料金</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">商品代金以外の必要料金</h2>
                 <ul className="list-disc list-inside space-y-1">
                   <li>ユニバーサルサービス料: 2円/月</li>
                   <li>電話リレーサービス料: 1円/月</li>
@@ -71,12 +71,12 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">申込方法</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">申込方法</h2>
                 <p>Webサイトからのオンライン申込</p>
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">支払方法</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">支払方法</h2>
                 <ul className="list-disc list-inside space-y-1">
                   <li>クレジットカード決済</li>
                   <li>銀行振込（請求書対応可）</li>
@@ -84,7 +84,7 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">支払時期</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">支払時期</h2>
                 <ul className="list-disc list-inside space-y-1">
                   <li>月末締め翌月請求</li>
                   <li>従量通話などの従量課金分は翌々月に合算</li>
@@ -92,7 +92,7 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">引き渡し時期</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">引き渡し時期</h2>
                 <p>物理SIM: 申込後1〜5営業日で発送、到着後の開通手続で利用開始</p>
                 <p className="text-white/60 text-sm mt-1">
                   ※eSIMは非対応です
@@ -100,7 +100,7 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">返品・交換・解約</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">返品・交換・解約</h2>
                 <ul className="list-disc list-inside space-y-2">
                   <li>
                     <strong>返品:</strong> 通信サービスの性質上、開通後の返品は不可
@@ -115,21 +115,21 @@ export default function LegalPage() {
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">役務提供条件</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">役務提供条件</h2>
                 <p>
                   電波状況、設備保守、天災等により一時的にサービスを利用できない場合があります。
                 </p>
               </div>
 
               <div>
-                <h2 className="text-[#d4af37] font-semibold mb-2 text-lg">クーリング・オフ</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">クーリング・オフ</h2>
                 <p>
                   本サービスは通信役務・通信販売に該当するため、クーリング・オフの適用外です。
                 </p>
               </div>
 
               <div id="telecom-law" className="pt-6 border-t border-white/10 scroll-mt-24">
-                <h2 className="text-[#d4af37] font-semibold mb-6 text-xl">電気通信事業法に基づく表示</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-6 text-xl">電気通信事業法に基づく表示</h2>
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-white font-semibold mb-3">電気通信事業者</h3>
@@ -148,7 +148,7 @@ export default function LegalPage() {
                       href="/documents/20251022133036857.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block text-[#d4af37] hover:text-[#f0d970] transition-colors underline"
+                      className="inline-block text-[#ff0066] hover:text-[#ff3399] transition-colors underline"
                     >
                       受理通知PDF（A-07-22969）を確認する
                     </a>
@@ -223,7 +223,7 @@ export default function LegalPage() {
                       メール：
                       <a
                         href="mailto:peach.2023.7.19@gmail.com"
-                        className="text-[#d4af37] hover:text-[#f0d970] transition-colors"
+                        className="text-[#ff0066] hover:text-[#ff3399] transition-colors"
                       >
                         peach.2023.7.19@gmail.com
                       </a>

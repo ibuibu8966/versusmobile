@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BUPPAN MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
+  title: "VERSUS MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
   description: "1GB/月880円・音声＋SMS込み。重い月は100GB目安（10GB/3日）で使い倒せる。個人向けと100回線以上の継続利用向けプランをご用意。",
 };
 

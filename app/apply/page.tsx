@@ -287,7 +287,7 @@ export default function ApplyPage() {
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
               <span className="text-white">3ヶ月パック</span>
-              <span className="text-[#d4af37] ml-2">お申し込み</span>
+              <span className="text-[#ff0066] ml-2">お申し込み</span>
             </h1>
           </div>
 
@@ -300,20 +300,20 @@ export default function ApplyPage() {
                     <div className="flex flex-col items-center flex-1">
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
                         currentStep >= step.number
-                          ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black'
+                          ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black'
                           : 'bg-white/10 text-white/40 border-2 border-white/20'
                       }`}>
                         {step.number}
                       </div>
                       <span className={`text-xs mt-2 transition-colors duration-300 ${
-                        currentStep >= step.number ? 'text-[#d4af37]' : 'text-white/40'
+                        currentStep >= step.number ? 'text-[#ff0066]' : 'text-white/40'
                       }`}>
                         {step.title}
                       </span>
                     </div>
                     {index < 3 && (
                       <div className={`h-0.5 flex-1 mx-2 transition-all duration-300 ${
-                        currentStep > step.number ? 'bg-[#d4af37]' : 'bg-white/20'
+                        currentStep > step.number ? 'bg-[#ff0066]' : 'bg-white/20'
                       }`} />
                     )}
                   </div>
@@ -336,7 +336,7 @@ export default function ApplyPage() {
                     onClick={() => updateFormData({ applicantType: 'individual' })}
                     className={`flex-1 py-3 rounded-xl font-semibold transition-all duration-300 ${
                       formData.applicantType === 'individual'
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black'
+                        ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black'
                         : 'bg-white/10 text-white/60 hover:bg-white/20'
                     }`}
                   >
@@ -347,7 +347,7 @@ export default function ApplyPage() {
                     onClick={() => updateFormData({ applicantType: 'corporate' })}
                     className={`flex-1 py-3 rounded-xl font-semibold transition-all duration-300 ${
                       formData.applicantType === 'corporate'
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black'
+                        ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black'
                         : 'bg-white/10 text-white/60 hover:bg-white/20'
                     }`}
                   >
@@ -365,7 +365,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.lastName || ''}
                           onChange={(e) => updateFormData({ lastName: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="山田"
                           required
                         />
@@ -376,7 +376,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.firstName || ''}
                           onChange={(e) => updateFormData({ firstName: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="太郎"
                           required
                         />
@@ -390,7 +390,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.lastNameKana || ''}
                           onChange={(e) => updateFormData({ lastNameKana: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="ヤマダ"
                           required
                         />
@@ -401,7 +401,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.firstNameKana || ''}
                           onChange={(e) => updateFormData({ firstNameKana: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="タロウ"
                           required
                         />
@@ -414,7 +414,7 @@ export default function ApplyPage() {
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => updateFormData({ phone: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="09012345678"
                         required
                       />
@@ -426,7 +426,7 @@ export default function ApplyPage() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => updateFormData({ email: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="example@email.com"
                         required
                       />
@@ -438,7 +438,7 @@ export default function ApplyPage() {
                         type="text"
                         value={formData.postalCode || ''}
                         onChange={(e) => updateFormData({ postalCode: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="1234567"
                         maxLength={7}
                         required
@@ -451,7 +451,7 @@ export default function ApplyPage() {
                         type="text"
                         value={formData.address || ''}
                         onChange={(e) => updateFormData({ address: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="東京都渋谷区..."
                         required
                       />
@@ -463,7 +463,7 @@ export default function ApplyPage() {
                         type="date"
                         value={formData.dateOfBirth || ''}
                         onChange={(e) => updateFormData({ dateOfBirth: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         required
                       />
                     </div>
@@ -479,7 +479,7 @@ export default function ApplyPage() {
                         type="text"
                         value={formData.companyName || ''}
                         onChange={(e) => updateFormData({ companyName: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="株式会社〇〇"
                         required
                       />
@@ -491,7 +491,7 @@ export default function ApplyPage() {
                         type="text"
                         value={formData.companyNameKana || ''}
                         onChange={(e) => updateFormData({ companyNameKana: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="カブシキガイシャ〇〇"
                         required
                       />
@@ -503,7 +503,7 @@ export default function ApplyPage() {
                         type="text"
                         value={formData.corporateNumber || ''}
                         onChange={(e) => updateFormData({ corporateNumber: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="1234567890123"
                         required
                       />
@@ -515,7 +515,7 @@ export default function ApplyPage() {
                         type="date"
                         value={formData.establishedDate || ''}
                         onChange={(e) => updateFormData({ establishedDate: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         required
                       />
                     </div>
@@ -526,7 +526,7 @@ export default function ApplyPage() {
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => updateFormData({ phone: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="0312345678"
                         required
                       />
@@ -538,7 +538,7 @@ export default function ApplyPage() {
                         type="email"
                         value={formData.email}
                         onChange={(e) => updateFormData({ email: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         placeholder="contact@company.com"
                         required
                       />
@@ -554,7 +554,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.representativeLastName || ''}
                             onChange={(e) => updateFormData({ representativeLastName: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="山田"
                             required
                           />
@@ -565,7 +565,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.representativeFirstName || ''}
                             onChange={(e) => updateFormData({ representativeFirstName: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="太郎"
                             required
                           />
@@ -579,7 +579,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.representativeLastNameKana || ''}
                             onChange={(e) => updateFormData({ representativeLastNameKana: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="ヤマダ"
                             required
                           />
@@ -590,7 +590,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.representativeFirstNameKana || ''}
                             onChange={(e) => updateFormData({ representativeFirstNameKana: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="タロウ"
                             required
                           />
@@ -603,7 +603,7 @@ export default function ApplyPage() {
                           type="date"
                           value={formData.representativeBirthDate || ''}
                           onChange={(e) => updateFormData({ representativeBirthDate: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           required
                         />
                       </div>
@@ -614,7 +614,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.representativePostalCode || ''}
                           onChange={(e) => updateFormData({ representativePostalCode: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="1234567"
                           maxLength={7}
                           required
@@ -627,7 +627,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.representativeAddress || ''}
                           onChange={(e) => updateFormData({ representativeAddress: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="東京都渋谷区..."
                           required
                         />
@@ -642,7 +642,7 @@ export default function ApplyPage() {
                             type="checkbox"
                             checked={copyRepToContact}
                             onChange={(e) => handleCopyRepToContact(e.target.checked)}
-                            className="w-4 h-4 rounded border-white/20 bg-white/10 text-[#d4af37] focus:ring-[#d4af37]"
+                            className="w-4 h-4 rounded border-white/20 bg-white/10 text-[#ff0066] focus:ring-[#ff0066]"
                           />
                           <span className="text-sm text-white/80 group-hover:text-white transition-colors">
                             代表者と同じ
@@ -657,7 +657,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.contactLastName || ''}
                             onChange={(e) => updateFormData({ contactLastName: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="佐藤"
                             required
                           />
@@ -668,7 +668,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.contactFirstName || ''}
                             onChange={(e) => updateFormData({ contactFirstName: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="花子"
                             required
                           />
@@ -682,7 +682,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.contactLastNameKana || ''}
                             onChange={(e) => updateFormData({ contactLastNameKana: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="サトウ"
                             required
                           />
@@ -693,7 +693,7 @@ export default function ApplyPage() {
                             type="text"
                             value={formData.contactFirstNameKana || ''}
                             onChange={(e) => updateFormData({ contactFirstNameKana: e.target.value })}
-                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                             placeholder="ハナコ"
                             required
                           />
@@ -710,7 +710,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.postalCode}
                           onChange={(e) => updateFormData({ postalCode: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="1234567"
                           maxLength={7}
                           required
@@ -723,7 +723,7 @@ export default function ApplyPage() {
                           type="text"
                           value={formData.address}
                           onChange={(e) => updateFormData({ address: e.target.value })}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="東京都千代田区..."
                           required
                         />
@@ -782,7 +782,7 @@ export default function ApplyPage() {
                     disabled={!isStep1Valid()}
                     className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                       isStep1Valid()
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black hover:shadow-xl hover:shadow-[#d4af37]/20'
+                        ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black hover:shadow-xl hover:shadow-[#ff0066]/20'
                         : 'bg-white/10 text-white/40 cursor-not-allowed'
                     }`}
                   >
@@ -808,12 +808,12 @@ export default function ApplyPage() {
                         onClick={() => updateFormData({ planType: '3month-50plus', lineCount: 50 })}
                         className={`p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
                           formData.planType === '3month-50plus'
-                            ? 'border-[#d4af37] bg-[#d4af37]/20'
+                            ? 'border-[#ff0066] bg-[#ff0066]/20'
                             : 'border-white/20 bg-white/5 hover:border-white/40'
                         }`}
                       >
                         <div className="text-lg font-bold text-white mb-2">50回線以上</div>
-                        <div className="text-3xl font-bold text-[#d4af37] mb-2">¥4,200<span className="text-lg text-white/60">/回線</span></div>
+                        <div className="text-3xl font-bold text-[#ff0066] mb-2">¥4,200<span className="text-lg text-white/60">/回線</span></div>
                         <div className="text-sm text-white/60">税込</div>
                       </button>
 
@@ -822,12 +822,12 @@ export default function ApplyPage() {
                         onClick={() => updateFormData({ planType: '3month-under50', lineCount: 1 })}
                         className={`p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
                           formData.planType === '3month-under50'
-                            ? 'border-[#d4af37] bg-[#d4af37]/20'
+                            ? 'border-[#ff0066] bg-[#ff0066]/20'
                             : 'border-white/20 bg-white/5 hover:border-white/40'
                         }`}
                       >
                         <div className="text-lg font-bold text-white mb-2">50回線未満</div>
-                        <div className="text-3xl font-bold text-[#d4af37] mb-2">¥4,600<span className="text-lg text-white/60">/回線</span></div>
+                        <div className="text-3xl font-bold text-[#ff0066] mb-2">¥4,600<span className="text-lg text-white/60">/回線</span></div>
                         <div className="text-sm text-white/60">税込</div>
                       </button>
                     </div>
@@ -850,7 +850,7 @@ export default function ApplyPage() {
                           onChange={(e) => updateFormData({ lineCount: parseInt(e.target.value) || 0 })}
                           min={formData.planType === '3month-50plus' ? 50 : 1}
                           max={formData.planType === '3month-under50' ? 49 : undefined}
-                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                          className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="回線数を入力"
                           required
                         />
@@ -859,10 +859,10 @@ export default function ApplyPage() {
 
                     {/* 合計金額表示 */}
                     {formData.planType && formData.lineCount && formData.lineCount > 0 && (
-                      <div className="mt-6 p-6 bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-2xl">
+                      <div className="mt-6 p-6 bg-[#ff0066]/10 border border-[#ff0066]/30 rounded-2xl">
                         <div className="text-center">
                           <div className="text-white/80 mb-2">合計金額</div>
-                          <div className="text-3xl font-bold text-[#d4af37] mb-2">
+                          <div className="text-3xl font-bold text-[#ff0066] mb-2">
                             {formData.lineCount}回線 × ¥{PLAN_PRICES[formData.planType].toLocaleString()} = ¥{(formData.lineCount * PLAN_PRICES[formData.planType]).toLocaleString()}
                           </div>
                           <div className="text-sm text-white/60">※事務手数料込み</div>
@@ -884,7 +884,7 @@ export default function ApplyPage() {
                     disabled={!isStep2Valid()}
                     className={`flex-1 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                       isStep2Valid()
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black hover:shadow-xl hover:shadow-[#d4af37]/20'
+                        ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black hover:shadow-xl hover:shadow-[#ff0066]/20'
                         : 'bg-white/10 text-white/40 cursor-not-allowed'
                     }`}
                   >
@@ -905,10 +905,10 @@ export default function ApplyPage() {
                     <label className="block text-white/80 mb-2">
                       身分証明書（表）<span className="text-red-400">*</span>
                     </label>
-                    <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-[#d4af37]/50 transition-colors">
+                    <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-[#ff0066]/50 transition-colors">
                       {formData.idCardFrontUrl ? (
                         <div>
-                          <div className="text-[#d4af37] mb-2">✓ アップロード完了</div>
+                          <div className="text-[#ff0066] mb-2">✓ アップロード完了</div>
                           <button
                             type="button"
                             onClick={() => updateFormData({ idCardFrontUrl: '' })}
@@ -949,7 +949,7 @@ export default function ApplyPage() {
                         type="date"
                         value={formData.expirationDate || ''}
                         onChange={(e) => updateFormData({ expirationDate: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         required
                       />
                     </div>
@@ -960,10 +960,10 @@ export default function ApplyPage() {
                     <label className="block text-white/80 mb-2">
                       身分証明書（裏）<span className="text-red-400">*</span>
                     </label>
-                    <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-[#d4af37]/50 transition-colors">
+                    <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-[#ff0066]/50 transition-colors">
                       {formData.idCardBackUrl ? (
                         <div>
-                          <div className="text-[#d4af37] mb-2">✓ アップロード完了</div>
+                          <div className="text-[#ff0066] mb-2">✓ アップロード完了</div>
                           <button
                             type="button"
                             onClick={() => updateFormData({ idCardBackUrl: '' })}
@@ -1004,7 +1004,7 @@ export default function ApplyPage() {
                         type="date"
                         value={formData.expirationDate || ''}
                         onChange={(e) => updateFormData({ expirationDate: e.target.value })}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#d4af37] transition-colors"
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         required
                       />
                     </div>
@@ -1016,10 +1016,10 @@ export default function ApplyPage() {
                       <label className="block text-white/80 mb-2">
                         登記簿謄本（3ヶ月以内発行）<span className="text-red-400">*</span>
                       </label>
-                      <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-[#d4af37]/50 transition-colors">
+                      <div className="border-2 border-dashed border-white/20 rounded-xl p-6 text-center hover:border-[#ff0066]/50 transition-colors">
                         {formData.registrationUrl ? (
                           <div>
-                            <div className="text-[#d4af37] mb-2">✓ アップロード完了</div>
+                            <div className="text-[#ff0066] mb-2">✓ アップロード完了</div>
                             <button
                               type="button"
                               onClick={() => updateFormData({ registrationUrl: '' })}
@@ -1066,7 +1066,7 @@ export default function ApplyPage() {
                     disabled={!isStep3Valid()}
                     className={`flex-1 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                       isStep3Valid()
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black hover:shadow-xl hover:shadow-[#d4af37]/20'
+                        ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black hover:shadow-xl hover:shadow-[#ff0066]/20'
                         : 'bg-white/10 text-white/40 cursor-not-allowed'
                     }`}
                   >
@@ -1085,7 +1085,7 @@ export default function ApplyPage() {
                 <div className="space-y-6 mb-8">
                   {/* 個人情報 */}
                   <div className="bg-white/5 rounded-xl p-6">
-                    <h3 className="text-lg font-bold text-[#d4af37] mb-4">個人情報</h3>
+                    <h3 className="text-lg font-bold text-[#ff0066] mb-4">個人情報</h3>
                     <div className="space-y-2 text-white/80">
                       {formData.applicantType === 'individual' ? (
                         <>
@@ -1137,7 +1137,7 @@ export default function ApplyPage() {
                     </div>
                     <button
                       onClick={() => setCurrentStep(1)}
-                      className="mt-4 text-[#d4af37] hover:text-[#f0d970] text-sm"
+                      className="mt-4 text-[#ff0066] hover:text-[#ff3399] text-sm"
                     >
                       修正する
                     </button>
@@ -1145,7 +1145,7 @@ export default function ApplyPage() {
 
                   {/* プラン情報 */}
                   <div className="bg-white/5 rounded-xl p-6">
-                    <h3 className="text-lg font-bold text-[#d4af37] mb-4">プラン情報</h3>
+                    <h3 className="text-lg font-bold text-[#ff0066] mb-4">プラン情報</h3>
                     <div className="space-y-2 text-white/80">
                       <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-white/60">プラン</span>
@@ -1157,12 +1157,12 @@ export default function ApplyPage() {
                       </div>
                       <div className="flex justify-between py-2 text-xl font-bold">
                         <span className="text-white">合計金額</span>
-                        <span className="text-[#d4af37]">¥{formData.planType && formData.lineCount ? (PLAN_PRICES[formData.planType] * formData.lineCount).toLocaleString() : 0}</span>
+                        <span className="text-[#ff0066]">¥{formData.planType && formData.lineCount ? (PLAN_PRICES[formData.planType] * formData.lineCount).toLocaleString() : 0}</span>
                       </div>
                     </div>
                     <button
                       onClick={() => setCurrentStep(2)}
-                      className="mt-4 text-[#d4af37] hover:text-[#f0d970] text-sm"
+                      className="mt-4 text-[#ff0066] hover:text-[#ff3399] text-sm"
                     >
                       修正する
                     </button>
@@ -1170,26 +1170,26 @@ export default function ApplyPage() {
 
                   {/* 書類 */}
                   <div className="bg-white/5 rounded-xl p-6">
-                    <h3 className="text-lg font-bold text-[#d4af37] mb-4">アップロード書類</h3>
+                    <h3 className="text-lg font-bold text-[#ff0066] mb-4">アップロード書類</h3>
                     <div className="space-y-2 text-white/80">
                       <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-white/60">身分証明書（表）</span>
-                        <span className="text-[#d4af37]">✓ アップロード済み</span>
+                        <span className="text-[#ff0066]">✓ アップロード済み</span>
                       </div>
                       <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-white/60">身分証明書（裏）</span>
-                        <span className="text-[#d4af37]">✓ アップロード済み</span>
+                        <span className="text-[#ff0066]">✓ アップロード済み</span>
                       </div>
                       {formData.applicantType === 'corporate' && formData.registrationUrl && (
                         <div className="flex justify-between py-2">
                           <span className="text-white/60">登記簿謄本</span>
-                          <span className="text-[#d4af37]">✓ アップロード済み</span>
+                          <span className="text-[#ff0066]">✓ アップロード済み</span>
                         </div>
                       )}
                     </div>
                     <button
                       onClick={() => setCurrentStep(3)}
-                      className="mt-4 text-[#d4af37] hover:text-[#f0d970] text-sm"
+                      className="mt-4 text-[#ff0066] hover:text-[#ff3399] text-sm"
                     >
                       修正する
                     </button>
@@ -1203,10 +1203,10 @@ export default function ApplyPage() {
                       type="checkbox"
                       checked={formData.agreePrivacy || false}
                       onChange={(e) => updateFormData({ agreePrivacy: e.target.checked })}
-                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#d4af37] focus:ring-[#d4af37]"
+                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#ff0066] focus:ring-[#ff0066]"
                     />
                     <span className="text-white/80 group-hover:text-white">
-                      <a href="/privacy" target="_blank" className="text-[#d4af37] hover:underline">プライバシーポリシー</a>に同意します
+                      <a href="/privacy" target="_blank" className="text-[#ff0066] hover:underline">プライバシーポリシー</a>に同意します
                     </span>
                   </label>
 
@@ -1215,10 +1215,10 @@ export default function ApplyPage() {
                       type="checkbox"
                       checked={formData.agreeTerms || false}
                       onChange={(e) => updateFormData({ agreeTerms: e.target.checked })}
-                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#d4af37] focus:ring-[#d4af37]"
+                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#ff0066] focus:ring-[#ff0066]"
                     />
                     <span className="text-white/80 group-hover:text-white">
-                      <a href="/terms" target="_blank" className="text-[#d4af37] hover:underline">利用規約</a>に同意します
+                      <a href="/terms" target="_blank" className="text-[#ff0066] hover:underline">利用規約</a>に同意します
                     </span>
                   </label>
 
@@ -1227,7 +1227,7 @@ export default function ApplyPage() {
                       type="checkbox"
                       checked={formData.agreeTelecom || false}
                       onChange={(e) => updateFormData({ agreeTelecom: e.target.checked })}
-                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#d4af37] focus:ring-[#d4af37]"
+                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#ff0066] focus:ring-[#ff0066]"
                     />
                     <span className="text-white/80 group-hover:text-white">
                       電気通信事業法約款に同意します
@@ -1239,7 +1239,7 @@ export default function ApplyPage() {
                       type="checkbox"
                       checked={formData.agreeWithdrawal || false}
                       onChange={(e) => updateFormData({ agreeWithdrawal: e.target.checked })}
-                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#d4af37] focus:ring-[#d4af37]"
+                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#ff0066] focus:ring-[#ff0066]"
                     />
                     <span className="text-white/80 group-hover:text-white">
                       初期契約解除制度を確認しました
@@ -1251,7 +1251,7 @@ export default function ApplyPage() {
                       type="checkbox"
                       checked={formData.agreeNoAntisocial || false}
                       onChange={(e) => updateFormData({ agreeNoAntisocial: e.target.checked })}
-                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#d4af37] focus:ring-[#d4af37]"
+                      className="mt-1 w-5 h-5 rounded border-white/20 bg-white/10 text-[#ff0066] focus:ring-[#ff0066]"
                     />
                     <span className="text-white/80 group-hover:text-white">
                       反社会的勢力ではないことを表明し確約します
@@ -1271,7 +1271,7 @@ export default function ApplyPage() {
                     disabled={!isStep4Valid() || isSubmitting}
                     className={`flex-1 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
                       isStep4Valid() && !isSubmitting
-                        ? 'bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black hover:shadow-xl hover:shadow-[#d4af37]/20'
+                        ? 'bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black hover:shadow-xl hover:shadow-[#ff0066]/20'
                         : 'bg-white/10 text-white/40 cursor-not-allowed'
                     }`}
                   >
@@ -1284,7 +1284,7 @@ export default function ApplyPage() {
             {/* ステップ5: 完了メッセージ */}
             {currentStep === 5 && (
               <div className="text-center py-12">
-                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-[#d4af37] to-[#f0d970] rounded-full flex items-center justify-center">
+                <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-r from-[#ff0066] to-[#ff3399] rounded-full flex items-center justify-center">
                   <svg className="w-12 h-12 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                   </svg>
@@ -1299,7 +1299,7 @@ export default function ApplyPage() {
 
                 <a
                   href="/"
-                  className="inline-block px-8 py-4 bg-gradient-to-r from-[#d4af37] to-[#f0d970] text-black font-bold rounded-xl hover:shadow-xl hover:shadow-[#d4af37]/20 transition-all duration-300"
+                  className="inline-block px-8 py-4 bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black font-bold rounded-xl hover:shadow-xl hover:shadow-[#ff0066]/20 transition-all duration-300"
                 >
                   トップページに戻る
                 </a>

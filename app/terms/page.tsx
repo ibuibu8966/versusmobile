@@ -9,17 +9,17 @@ export default function TermsPage() {
       <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-3xl sm:text-4xl font-bold mb-8">
-            <span className="text-white">BUPPAN MOBILE</span>
-            <span className="text-[#d4af37] ml-2">利用規約</span>
+            <span className="text-white">VERSUS MOBILE</span>
+            <span className="text-[#ff0066] ml-2">利用規約</span>
           </h1>
 
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8">
             <div className="space-y-8 text-white/80 leading-relaxed">
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第1条（適用）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第1条（適用）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
-                    本規約は、合同会社ピーチ（以下「当社」といいます）が提供する「BUPPAN
+                    本規約は、合同会社ピーチ（以下「当社」といいます）が提供する「VERSUS
                     MOBILE」（以下「本サービス」といいます）の利用に関する条件を定めるものです。
                   </li>
                   <li>
@@ -29,7 +29,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第2条（定義）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第2条（定義）</h2>
                 <p className="mb-2">本規約において使用する用語の定義は、以下のとおりとします。</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>
@@ -41,7 +41,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第3条（契約の成立）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第3条（契約の成立）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     本サービスの利用契約は、利用者が当社所定の方法により申込を行い、当社がこれを承諾したときに成立します。
@@ -56,7 +56,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第4条（料金）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第4条（料金）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     利用者は、当社が定める料金表に基づき、利用料金を支払うものとします。
@@ -74,7 +74,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第5条（支払い方法）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第5条（支払い方法）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     利用者は、以下のいずれかの方法により料金を支払うものとします。
@@ -90,7 +90,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第6条（通信制限）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第6条（通信制限）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     各プランには3日間の合計データ通信量の上限があり、上限に達した場合、当該期間は通信速度を256kbpsに制限します。
@@ -105,7 +105,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第7条（禁止行為）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第7条（禁止行為）</h2>
                 <p className="mb-2">利用者は、以下の行為を行ってはなりません。</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>法令または公序良俗に違反する行為</li>
@@ -119,7 +119,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第8条（解約）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第8条（解約）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     利用者は、マイページから当月解約申請を行うことで、当月末に本サービスを解約できます。
@@ -137,7 +137,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第9条（サービスの停止・中断）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第9条（サービスの停止・中断）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     当社は、以下の場合、本サービスの全部または一部を停止・中断することがあります。
@@ -154,7 +154,7 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第10条（免責事項）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第10条（免責事項）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     当社は、本サービスの提供に関して、通信速度、通信品質、提供エリア等について保証するものではありません。
@@ -166,14 +166,14 @@ export default function TermsPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第11条（規約の変更）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第11条（規約の変更）</h2>
                 <p>
                   当社は、利用者の承諾なく本規約を変更できるものとします。変更後の規約は、当社ウェブサイトに掲載した時点で効力を生じます。
                 </p>
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">第12条（準拠法・管轄裁判所）</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">第12条（準拠法・管轄裁判所）</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>本規約の準拠法は日本法とします。</li>
                   <li>

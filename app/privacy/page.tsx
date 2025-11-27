@@ -10,20 +10,20 @@ export default function PrivacyPage() {
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-3xl sm:text-4xl font-bold mb-8">
             <span className="text-white">プライバシー</span>
-            <span className="text-[#d4af37]">ポリシー</span>
+            <span className="text-[#ff0066]">ポリシー</span>
           </h1>
 
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-6 sm:p-8">
             <div className="space-y-8 text-white/80 leading-relaxed">
               <section>
                 <p>
-                  合同会社ピーチ（以下「当社」といいます）は、BUPPAN
+                  合同会社ピーチ（以下「当社」といいます）は、VERSUS
                   MOBILEサービス（以下「本サービス」といいます）の提供にあたり、利用者の個人情報の重要性を認識し、個人情報保護法その他の関係法令を遵守するとともに、以下のとおりプライバシーポリシー（以下「本ポリシー」といいます）を定め、個人情報の適切な取り扱いに努めます。
                 </p>
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">1. 収集する情報</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">1. 収集する情報</h2>
                 <p className="mb-2">当社は、以下の情報を収集します。</p>
 
                 <h3 className="text-white font-semibold mt-4 mb-2">（1）契約時に収集する情報</h3>
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">2. 利用目的</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">2. 利用目的</h2>
                 <p className="mb-2">収集した個人情報は、以下の目的で利用します。</p>
                 <ul className="list-disc list-inside space-y-2 pl-4">
                   <li>本サービスの提供、維持、改善</li>
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">3. 第三者提供</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">3. 第三者提供</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     当社は、以下の場合を除き、利用者の個人情報を第三者に提供しません。
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">4. 個人情報の管理</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">4. 個人情報の管理</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     当社は、個人情報への不正アクセス、紛失、破壊、改ざん、漏洩等を防止するため、適切な安全管理措置を講じます。
@@ -104,7 +104,7 @@ export default function PrivacyPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">5. Cookie・広告識別子について</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">5. Cookie・広告識別子について</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     当社のウェブサイトでは、利用者の利便性向上やアクセス解析のため、Cookieを使用することがあります。
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">6. 開示・訂正・削除等の請求</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">6. 開示・訂正・削除等の請求</h2>
                 <ol className="list-decimal list-inside space-y-2 pl-4">
                   <li>
                     利用者は、当社が保有する自己の個人情報について、開示、訂正、削除、利用停止等を請求できます。
@@ -134,28 +134,28 @@ export default function PrivacyPage() {
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">7. 保存期間</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">7. 保存期間</h2>
                 <p>
                   個人情報は、利用目的の達成に必要な期間、または法令で定められた期間保存します。保存期間経過後は、適切な方法で削除または匿名化します。
                 </p>
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">8. 未成年者の個人情報</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">8. 未成年者の個人情報</h2>
                 <p>
                   18歳未満の方が本サービスを利用する場合、保護者の同意が必要です。当社は、保護者の同意なく未成年者の個人情報を収集しません。
                 </p>
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">9. プライバシーポリシーの変更</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">9. プライバシーポリシーの変更</h2>
                 <p>
                   当社は、法令の変更、サービス内容の変更等に伴い、本ポリシーを変更することがあります。変更後のポリシーは、当社ウェブサイトに掲載した時点で効力を生じます。
                 </p>
               </section>
 
               <section>
-                <h2 className="text-[#d4af37] font-semibold mb-3 text-xl">10. お問い合わせ窓口</h2>
+                <h2 className="text-[#ff0066] font-semibold mb-3 text-xl">10. お問い合わせ窓口</h2>
                 <p className="mb-2">個人情報の取り扱いに関するお問い合わせは、以下までご連絡ください。</p>
                 <div className="bg-white/5 rounded-2xl p-6 mt-4">
                   <p className="font-semibold text-white mb-2">合同会社ピーチ 個人情報お問い合わせ窓口</p>
@@ -164,7 +164,7 @@ export default function PrivacyPage() {
                     メールアドレス:{' '}
                     <a
                       href="mailto:peach.2023.7.19@gmail.com"
-                      className="text-[#d4af37] hover:text-[#f0d970] transition-colors"
+                      className="text-[#ff0066] hover:text-[#ff3399] transition-colors"
                     >
                       peach.2023.7.19@gmail.com
                     </a>

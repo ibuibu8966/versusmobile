@@ -8,8 +8,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="text-xl sm:text-2xl font-bold mb-4">
-              <span className="text-white">BUPPAN</span>
-              <span className="text-[#d4af37] ml-1 sm:ml-2">MOBILE</span>
+              <span className="text-white">VERSUS</span>
+              <span className="text-[#ff0066] ml-1 sm:ml-2">MOBILE</span>
             </div>
             <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
               仕入れの相棒。音声込みで&quot;使うぶんだけ&quot;に最適化。
@@ -17,14 +17,14 @@ export default function Footer() {
               1GB/月880円・音声＋SMS込み。
             </p>
             <div className="mt-4 text-white/60 text-xs sm:text-sm">
-              <p>合同会社ピーチ（BUPPAN MOBILE運営）</p>
+              <p>合同会社ピーチ（VERSUS MOBILE運営）</p>
               <p className="mt-2">〒290-0242</p>
               <p>千葉県市原市荻作530-4</p>
               <p className="mt-2 break-words">
                 サポート:{' '}
                 <a
                   href="mailto:peach.2023.7.19@gmail.com"
-                  className="text-[#d4af37] hover:text-[#f0d970] transition-colors"
+                  className="text-[#ff0066] hover:text-[#ff3399] transition-colors"
                 >
                   peach.2023.7.19@gmail.com
                 </a>
@@ -39,7 +39,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#pricing"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   料金プラン
                 </Link>
@@ -47,7 +47,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#features"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   特徴
                 </Link>
@@ -55,7 +55,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/apply"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   お申し込み
                 </Link>
@@ -63,7 +63,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/mypage"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   マイページ
                 </Link>
@@ -78,7 +78,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   利用規約
                 </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/privacy"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   プライバシーポリシー
                 </Link>
@@ -94,7 +94,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/legal"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   特定商取引法表示
                 </Link>
@@ -102,7 +102,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/legal#telecom-law"
-                  className="text-white/60 hover:text-[#d4af37] transition-colors"
+                  className="text-white/60 hover:text-[#ff0066] transition-colors"
                 >
                   電気通信事業法表示
                 </Link>
@@ -115,7 +115,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-white/40 text-sm">
-              © {new Date().getFullYear()} 合同会社ピーチ（BUPPAN MOBILE運営）. All rights reserved.
+              © {new Date().getFullYear()} 合同会社ピーチ（VERSUS MOBILE運営）. All rights reserved.
             </p>
             <div className="text-white/40 text-sm">
               <p>電気通信事業届出番号: A-07-22969</p>
