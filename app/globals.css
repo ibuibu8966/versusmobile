@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
+  --background: #050508;
   --foreground: #ffffff;
   --primary: #ff0066;
   --primary-light: #ff3399;
   --primary-dark: #cc0052;
+  --neon-cyan: #00ffff;
+  --neon-blue: #0066ff;
 }
 
 @theme inline {
@@ -32,4 +34,93 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Neon glow effects */
+.neon-text {
+  text-shadow:
+    0 0 5px #ff0066,
+    0 0 10px #ff0066,
+    0 0 20px #ff0066,
+    0 0 40px #ff0066;
+}
+
+.neon-text-cyan {
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff;
+}
+
+.neon-box {
+  box-shadow:
+    0 0 5px #ff0066,
+    0 0 10px #ff0066,
+    0 0 20px #ff0066,
+    inset 0 0 10px rgba(255, 0, 102, 0.1);
+}
+
+.neon-box-hover:hover {
+  box-shadow:
+    0 0 10px #ff0066,
+    0 0 20px #ff0066,
+    0 0 40px #ff0066,
+    0 0 60px #ff0066,
+    inset 0 0 20px rgba(255, 0, 102, 0.2);
+}
+
+.neon-border {
+  border-color: #ff0066;
+  box-shadow:
+    0 0 5px #ff0066,
+    0 0 10px rgba(255, 0, 102, 0.5),
+    inset 0 0 5px rgba(255, 0, 102, 0.1);
+}
+
+.neon-gradient-bg {
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(255, 0, 102, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 51, 153, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 70%),
+    var(--background);
+}
+
+.neon-line {
+  background: linear-gradient(90deg, transparent, #ff0066, #ff3399, #ff0066, transparent);
+  box-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #ff0066,
+      0 0 10px #ff0066,
+      0 0 20px #ff0066,
+      0 0 40px #ff0066;
+  }
+  20%, 24%, 55% {
+    opacity: 0.8;
+    text-shadow: none;
+  }
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.animate-neon-flicker {
+  animation: neon-flicker 3s linear infinite;
 }
