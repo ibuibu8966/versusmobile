@@ -13,8 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://versusmobile.vercel.app"),
   title: "VERSUS MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
   description: "1GB/月880円・音声＋SMS込み。重い月は100GB目安（10GB/3日）で使い倒せる。個人向けと100回線以上の継続利用向けプランをご用意。",
+  applicationName: "VERSUS MOBILE",
+  keywords: ["MVNO", "格安SIM", "音声通話", "モバイル", "仕入れ", "VERSUS MOBILE"],
+  authors: [{ name: "VERSUS MOBILE" }],
   openGraph: {
     type: "website",
     locale: "ja_JP",
@@ -36,6 +40,10 @@ export const metadata: Metadata = {
     title: "VERSUS MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
     description: "1GB/月880円・音声＋SMS込み。重い月は100GB目安（10GB/3日）で使い倒せる。",
     images: ["/images/versus-logo.jpg"],
+  },
+  icons: {
+    icon: "/icon.jpg",
+    apple: "/apple-icon.jpg",
   },
 };
 
