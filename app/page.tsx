@@ -22,27 +22,26 @@ export default function HomePage() {
             backgroundSize: '50px 50px'
           }}></div>
         </div>
+
+        {/* 背景ロゴ - 中央配置 */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] md:w-[900px] md:h-[900px] z-0">
+          <Image
+            src="/images/versus-logo.jpg"
+            alt=""
+            width={900}
+            height={900}
+            className="w-full h-full object-contain opacity-10"
+            priority
+          />
+          <div className="absolute inset-0 bg-[#ff0066]/10 rounded-full blur-[200px] animate-pulse"></div>
+        </div>
+
         {/* Radial glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#ff0066]/20 rounded-full blur-[150px] z-0"></div>
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#ff3399]/10 rounded-full blur-[100px] z-0"></div>
 
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="text-center">
-            {/* ロゴ画像 */}
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                <Image
-                  src="/images/versus-logo.jpg"
-                  alt="VERSUS MOBILE"
-                  width={256}
-                  height={256}
-                  className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(255,0,102,0.8)]"
-                  priority
-                />
-                <div className="absolute inset-0 bg-[#ff0066]/20 blur-xl animate-pulse -z-10"></div>
-              </div>
-            </div>
-
             {/* 装飾的な上部ライン */}
             <div className="flex items-center justify-center mb-6 sm:mb-8">
               <div className="h-px w-8 sm:w-16 neon-line"></div>
