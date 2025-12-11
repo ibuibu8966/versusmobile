@@ -20,6 +20,7 @@ interface Line {
   spareTagId?: string | null
   returnDate?: string | null
   shipmentDate?: string | null
+  contractMonth?: string | null
   lineStatus: string
   simLocation?: Tag | null
   spareTag?: Tag | null
@@ -32,6 +33,7 @@ interface PendingChange {
   spareTagId?: string | null
   shipmentDate?: string | null
   returnDate?: string | null
+  contractMonth?: string | null
   lineStatus?: string
 }
 
@@ -68,6 +70,7 @@ interface Application {
   expirationDate?: string | null
   comment1?: string | null
   comment2?: string | null
+  isArchived?: boolean
   createdAt: string
   submittedAt?: string | null
   lines: Line[]
@@ -93,6 +96,7 @@ export default function ApplicationDetailPage() {
     spareTagId: '',
     shipmentDate: '',
     returnDate: '',
+    contractMonth: '',
     lineStatus: ''
   })
   const [showBulkSettingsModal, setShowBulkSettingsModal] = useState(false)
@@ -172,7 +176,7 @@ export default function ApplicationDetailPage() {
   }
 
   // 回線の変更を追跡（即時保存しない）
-  const handleLineChange = (lineId: string, field: keyof PendingChange, value: string | null) => {
+  const handleLineChange = (lineId: string, field: keyof PendingChange, value: string | number | null) => {
     setPendingChanges(prev => ({
       ...prev,
       [lineId]: {
@@ -230,6 +234,10 @@ export default function ApplicationDetailPage() {
           aValue = a.returnDate || ''
           bValue = b.returnDate || ''
           break
+        case 'contractMonth':
+          aValue = a.contractMonth || ''
+          bValue = b.contractMonth || ''
+          break
         case 'lineStatus':
           const statusOrder: Record<string, number> = {
             'not_opened': 1,
@@ -252,7 +260,7 @@ export default function ApplicationDetailPage() {
 
       if (sortConfig.key === 'lineStatus') {
         return sortConfig.direction === 'asc' ? aValue - bValue : bValue - aValue
-      } else if (sortConfig.key === 'shipmentDate' || sortConfig.key === 'returnDate') {
+      } else if (sortConfig.key === 'shipmentDate' || sortConfig.key === 'returnDate' || sortConfig.key === 'contractMonth') {
         return sortConfig.direction === 'asc'
           ? aValue.localeCompare(bValue)
           : bValue.localeCompare(aValue)
@@ -309,15 +317,19 @@ export default function ApplicationDetailPage() {
   }
 
   // ICCID一括入力を保存
-  const handleIccidBulkSave = async (assignments: { lineId: string; iccid: string }[]) => {
+  const handleIccidBulkSave = async (assignments: { lineId: string; iccid: string; contractMonth?: string }[]) => {
     setIsSaving(true)
     try {
       const results = await Promise.all(
         assignments.map(async (assignment) => {
+          const updateData: { iccid: string; contractMonth?: string } = { iccid: assignment.iccid }
+          if (assignment.contractMonth) {
+            updateData.contractMonth = assignment.contractMonth
+          }
           const response = await fetch(`/api/admin/lines/${assignment.lineId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ iccid: assignment.iccid }),
+            body: JSON.stringify(updateData),
           })
           return response.ok
         })
@@ -344,6 +356,7 @@ export default function ApplicationDetailPage() {
     if (bulkSettings.spareTagId) fieldsToApply.push('spareTagId')
     if (bulkSettings.shipmentDate) fieldsToApply.push('shipmentDate')
     if (bulkSettings.returnDate) fieldsToApply.push('returnDate')
+    if (bulkSettings.contractMonth) fieldsToApply.push('contractMonth')
     if (bulkSettings.lineStatus) fieldsToApply.push('lineStatus')
 
     if (fieldsToApply.length === 0) {
@@ -363,6 +376,7 @@ export default function ApplicationDetailPage() {
       spareTagId: '',
       shipmentDate: '',
       returnDate: '',
+      contractMonth: '',
       lineStatus: ''
     })
   }
@@ -427,6 +441,37 @@ export default function ApplicationDetailPage() {
       alert('コメントの保存に失敗しました')
     } finally {
       setIsSavingComments(false)
+    }
+  }
+
+  const handleArchiveToggle = async () => {
+    const newArchiveState = !application?.isArchived
+    const confirmMessage = newArchiveState
+      ? 'この申し込みをアーカイブしますか？\nアーカイブすると一覧から非表示になり、関連する回線も回線一覧から非表示になります。'
+      : 'この申し込みを復元しますか？\n復元すると一覧に再表示されます。'
+
+    if (!confirm(confirmMessage)) return
+
+    try {
+      const response = await fetch(`/api/admin/applications/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isArchived: newArchiveState }),
+      })
+
+      if (response.ok) {
+        alert(newArchiveState ? 'アーカイブしました' : '復元しました')
+        if (newArchiveState) {
+          router.push('/admin/applications')
+        } else {
+          fetchApplication()
+        }
+      } else {
+        alert('処理に失敗しました')
+      }
+    } catch (error) {
+      console.error('アーカイブ処理エラー:', error)
+      alert('処理に失敗しました')
     }
   }
 
@@ -516,13 +561,30 @@ export default function ApplicationDetailPage() {
         <div className="mb-6 flex items-center justify-between">
           <div>
             <Link
-              href="/admin/applications"
+              href={application.isArchived ? "/admin/applications/archived" : "/admin/applications"}
               className="text-blue-600 hover:text-blue-800 mb-2 inline-block"
             >
-              ← 一覧に戻る
+              ← {application.isArchived ? 'アーカイブ一覧に戻る' : '一覧に戻る'}
             </Link>
-            <h1 className="text-2xl font-bold text-gray-900">申し込み詳細</h1>
+            <h1 className="text-2xl font-bold text-gray-900">
+              申し込み詳細
+              {application.isArchived && (
+                <span className="ml-3 text-sm font-medium px-2 py-1 bg-gray-200 text-gray-700 rounded">
+                  アーカイブ済み
+                </span>
+              )}
+            </h1>
           </div>
+          <button
+            onClick={handleArchiveToggle}
+            className={`px-4 py-2 rounded text-sm font-medium ${
+              application.isArchived
+                ? 'bg-green-600 hover:bg-green-700 text-white'
+                : 'bg-gray-600 hover:bg-gray-700 text-white'
+            }`}
+          >
+            {application.isArchived ? '復元する' : 'アーカイブする'}
+          </button>
         </div>
 
         {/* 申し込み情報 */}
@@ -895,6 +957,12 @@ export default function ApplicationDetailPage() {
                   </th>
                   <th
                     className="px-1 py-0.5 text-left text-[10px] font-semibold text-gray-700 border border-gray-300 cursor-pointer hover:bg-gray-200 select-none"
+                    onClick={() => handleSort('contractMonth')}
+                  >
+                    契約月 {sortConfig.key === 'contractMonth' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
+                  </th>
+                  <th
+                    className="px-1 py-0.5 text-left text-[10px] font-semibold text-gray-700 border border-gray-300 cursor-pointer hover:bg-gray-200 select-none"
                     onClick={() => handleSort('lineStatus')}
                   >
                     ステータス {sortConfig.key === 'lineStatus' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
@@ -910,6 +978,7 @@ export default function ApplicationDetailPage() {
                   const currentSpareTagId = getCurrentValue(line.id, 'spareTagId', line.spareTagId)
                   const currentShipmentDate = getCurrentValue(line.id, 'shipmentDate', line.shipmentDate)
                   const currentReturnDate = getCurrentValue(line.id, 'returnDate', line.returnDate)
+                  const currentContractMonth = getCurrentValue(line.id, 'contractMonth', line.contractMonth)
                   const currentLineStatus = getCurrentValue(line.id, 'lineStatus', line.lineStatus)
 
                   return (
@@ -997,6 +1066,14 @@ export default function ApplicationDetailPage() {
                           value={currentReturnDate ? currentReturnDate.split('T')[0] : ''}
                           onChange={(e) => handleLineChange(line.id, 'returnDate', e.target.value ? new Date(e.target.value).toISOString() : null)}
                           className="w-full px-2 py-1 border border-gray-300 rounded text-gray-900"
+                        />
+                      </td>
+                      <td className="px-3 py-2 text-sm border border-gray-300">
+                        <input
+                          type="month"
+                          value={currentContractMonth || ''}
+                          onChange={(e) => handleLineChange(line.id, 'contractMonth', e.target.value || null)}
+                          className="w-32 px-2 py-1 border border-gray-300 rounded text-gray-900"
                         />
                       </td>
                       <td className="px-3 py-2 text-sm border border-gray-300">
@@ -1093,6 +1170,18 @@ export default function ApplicationDetailPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
+                    契約月
+                  </label>
+                  <input
+                    type="month"
+                    value={bulkSettings.contractMonth}
+                    onChange={(e) => setBulkSettings({ ...bulkSettings, contractMonth: e.target.value })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded text-gray-900"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     ステータス
                   </label>
                   <select
@@ -1120,6 +1209,7 @@ export default function ApplicationDetailPage() {
                       spareTagId: '',
                       shipmentDate: '',
                       returnDate: '',
+                      contractMonth: '',
                       lineStatus: ''
                     })
                   }}

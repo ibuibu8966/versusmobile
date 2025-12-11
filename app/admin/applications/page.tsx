@@ -465,15 +465,16 @@ export default function ApplicationsPage() {
             <table className="w-full border-collapse border border-gray-300">
               <thead className="sticky top-0 z-20">
                 <tr className="bg-gray-100">
+                  <th className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">詳細</th>
                   <th colSpan={11} className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">個人情報/法人情報</th>
                   <th colSpan={4} className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">回線数</th>
                   <th className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">画像</th>
                   <th className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">有効期限</th>
                   <th colSpan={2} className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">ステータス</th>
                   <th colSpan={2} className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">コメント</th>
-                  <th className="px-1 py-0.5 text-center text-[10px] font-bold text-gray-800 border border-gray-300">詳細</th>
                 </tr>
                 <tr className="bg-gray-50">
+                  <th className="px-1 py-0.5 text-left text-[10px] font-semibold text-gray-700 border border-gray-300">詳細</th>
                   <th
                     className="px-1 py-0.5 text-left text-[10px] font-semibold text-gray-700 border border-gray-300 cursor-pointer hover:bg-gray-200 select-none"
                     onClick={() => handleSort('applicantType')}
@@ -595,7 +596,6 @@ export default function ApplicationsPage() {
                   >
                     コメント2 {sortConfig.key === 'comment2' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th className="px-1 py-0.5 text-left text-[10px] font-semibold text-gray-700 border border-gray-300">詳細</th>
                 </tr>
               </thead>
               <tbody className="bg-white">
@@ -609,6 +609,16 @@ export default function ApplicationsPage() {
 
                   return (
                     <tr key={app.id} className={`hover:bg-blue-50 ${expired ? 'border-2 border-red-500' : ''} ${hasChanges ? 'bg-yellow-50' : ''}`}>
+                      <td className="px-0.5 py-0.5 text-[10px] font-medium border border-gray-300">
+                        <div className="min-w-[2ch] truncate">
+                          <Link
+                            href={`/admin/applications/${app.id}`}
+                            className="text-blue-600 hover:text-blue-900"
+                          >
+                            詳細
+                          </Link>
+                        </div>
+                      </td>
                       <td className="px-0.5 py-0.5 text-[10px] text-gray-900 border border-gray-300">
                         <div className="min-w-[5ch] truncate" title={app.applicantType === 'individual' ? '個人' : '法人'}>
                           {app.applicantType === 'individual' ? '個人' : '法人'}
@@ -766,16 +776,6 @@ export default function ApplicationsPage() {
                         onClick={() => handleCellClick(app.comment2 || '-')}>
                         <div className="min-w-[10ch] max-w-[10ch] truncate" title={app.comment2 || '-'}>
                           {app.comment2 || '-'}
-                        </div>
-                      </td>
-                      <td className="px-0.5 py-0.5 text-[10px] font-medium border border-gray-300">
-                        <div className="min-w-[2ch] truncate">
-                          <Link
-                            href={`/admin/applications/${app.id}`}
-                            className="text-blue-600 hover:text-blue-900"
-                          >
-                            詳細
-                          </Link>
                         </div>
                       </td>
                     </tr>

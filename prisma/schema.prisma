@@ -78,6 +78,7 @@ model Application {
   verificationStatus String  @default("unverified") // 'unverified' | 'verified' | 'issue'
   paymentStatus      String  @default("not_issued") // 'not_issued' | 'issued' | 'paid'
   status             String  @default("draft")      // 'draft' | 'submitted' | 'processing' | 'completed'
+  isArchived         Boolean @default(false)
 
   // コメント
   comment1          String?  @db.Text
@@ -108,6 +109,7 @@ model Line {
   spareTagId        String?  // 予備タグID
   returnDate        DateTime?
   shipmentDate      DateTime?
+  contractMonth     String?  // 契約月（"2025-01"形式）
   lineStatus        String   @default("not_opened") // 'not_opened' | 'opened' | 'shipped' | 'waiting_return' | 'returned' | 'canceled'
 
   // タイムスタンプ
