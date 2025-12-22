@@ -185,6 +185,13 @@ export default function ApplyPage() {
   }
 
   const handleFileUpload = async (file: File, fieldName: string) => {
+    // ファイルサイズチェック（4.5MB - Vercel制限）
+    const MAX_FILE_SIZE = 4.5 * 1024 * 1024
+    if (file.size > MAX_FILE_SIZE) {
+      alert('ファイルサイズは4.5MB以下にしてください。\nファイルを圧縮するか、解像度を下げてお試しください。')
+      return
+    }
+
     try {
       setUploadingFile(fieldName)
       const formDataObj = new FormData()

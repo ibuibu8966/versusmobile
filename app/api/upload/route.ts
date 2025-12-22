@@ -16,11 +16,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // ファイルサイズチェック（10MB）
-    const MAX_FILE_SIZE = 10 * 1024 * 1024
+    // ファイルサイズチェック（4.5MB - Vercel制限）
+    const MAX_FILE_SIZE = 4.5 * 1024 * 1024
     if (file.size > MAX_FILE_SIZE) {
       return NextResponse.json(
-        { error: 'ファイルサイズは10MB以下にしてください' },
+        { error: 'ファイルサイズは4.5MB以下にしてください' },
         { status: 400 }
       )
     }
