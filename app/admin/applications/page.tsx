@@ -52,6 +52,14 @@ interface PendingChange {
   paymentStatus?: string
 }
 
+// URLがPDFかどうかを判定
+const isPdfUrl = (url: string | null): boolean => {
+  if (!url) return false
+  // クエリパラメータを除去してから拡張子をチェック
+  const pathWithoutQuery = url.split('?')[0]
+  return pathWithoutQuery.toLowerCase().endsWith('.pdf')
+}
+
 export default function ApplicationsPage() {
   const router = useRouter()
   const [applications, setApplications] = useState<Application[]>([])
@@ -962,10 +970,18 @@ export default function ApplicationsPage() {
                 {/* 画像表示 */}
                 <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center min-h-[400px]">
                   {selectedImageType === 'front' && selectedApplication.idCardFrontUrl && (
-                    <img src={selectedApplication.idCardFrontUrl} alt="身分証（表）" className="max-w-full max-h-[600px] object-contain" />
+                    isPdfUrl(selectedApplication.idCardFrontUrl) ? (
+                      <iframe src={selectedApplication.idCardFrontUrl} className="w-full h-[600px]" title="身分証（表）" />
+                    ) : (
+                      <img src={selectedApplication.idCardFrontUrl} alt="身分証（表）" className="max-w-full max-h-[600px] object-contain" />
+                    )
                   )}
                   {selectedImageType === 'back' && selectedApplication.idCardBackUrl && (
-                    <img src={selectedApplication.idCardBackUrl} alt="身分証（裏）" className="max-w-full max-h-[600px] object-contain" />
+                    isPdfUrl(selectedApplication.idCardBackUrl) ? (
+                      <iframe src={selectedApplication.idCardBackUrl} className="w-full h-[600px]" title="身分証（裏）" />
+                    ) : (
+                      <img src={selectedApplication.idCardBackUrl} alt="身分証（裏）" className="max-w-full max-h-[600px] object-contain" />
+                    )
                   )}
                   {selectedImageType === 'registration' && selectedApplication.registrationUrl && (
                     <iframe src={selectedApplication.registrationUrl} className="w-full h-[600px]" title="謄本" />
