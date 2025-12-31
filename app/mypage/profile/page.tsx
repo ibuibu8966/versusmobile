@@ -5,34 +5,22 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 interface Profile {
-  contractorType: 'individual' | 'corporate'
-  email: string
-  lastName?: string
-  firstName?: string
-  lastNameKana?: string
-  firstNameKana?: string
-  companyName?: string
-  companyNameKana?: string
-  corporateNumber?: string
-  representativeLastName?: string
-  representativeFirstName?: string
-  representativeLastNameKana?: string
-  representativeFirstNameKana?: string
-  representativeBirthDate?: string
-  representativePostalCode?: string
-  representativeAddress?: string
-  contactLastName?: string
-  contactFirstName?: string
-  contactLastNameKana?: string
-  contactFirstNameKana?: string
-  phone?: string
-  postalCode?: string
-  address?: string
-  dateOfBirth?: string
-  idCardFrontUrl?: string
-  idCardBackUrl?: string
-  registrationUrl?: string
-  expirationDate?: string
+  user: {
+    id: string
+    email: string
+    name: string
+    contractorType: 'individual' | 'corporate'
+  }
+  applications: Array<{
+    id: string
+    lastName?: string
+    firstName?: string
+    companyName?: string
+    phone?: string
+    postalCode?: string
+    address?: string
+    applicantType: string
+  }>
 }
 
 export default function ProfilePage() {
@@ -63,7 +51,7 @@ export default function ProfilePage() {
         return
       }
 
-      setProfile(data.profile)
+      setProfile(data)
     } catch (err) {
       console.error('契約者情報取得エラー:', err)
       setError('契約者情報の取得に失敗しました')
@@ -72,15 +60,10 @@ export default function ProfilePage() {
     }
   }
 
-  const formatDate = (dateString: string | undefined | null) => {
-    if (!dateString) return '-'
-    return new Date(dateString).toLocaleDateString('ja-JP')
-  }
-
   if (isLoading) {
     return (
-      <div className="p-6">
-        <div className="text-center text-gray-500">読み込み中...</div>
+      <div className="p-6 flex items-center justify-center min-h-[50vh]">
+        <div className="text-white/70">読み込み中...</div>
       </div>
     )
   }
@@ -88,7 +71,7 @@ export default function ProfilePage() {
   if (error) {
     return (
       <div className="p-6">
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg">
           {error}
         </div>
       </div>
@@ -99,206 +82,106 @@ export default function ProfilePage() {
     return null
   }
 
+  const primaryApp = profile.applications[0]
+
   return (
-    <div className="p-6">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-900">契約者情報</h2>
+    <div className="p-4 sm:p-6 max-w-4xl mx-auto">
+      {/* ヘッダー */}
+      <div className="mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white">
+          契約者<span className="text-[#ff0066] neon-text">情報</span>
+        </h2>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* 基本情報 */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="px-4 py-3 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">基本情報</h3>
+        <div className="bg-black/40 backdrop-blur-sm border border-[#ff0066]/30 rounded-2xl overflow-hidden neon-border">
+          <div className="px-4 sm:px-6 py-4 border-b border-[#ff0066]/20">
+            <h3 className="text-lg font-bold text-white">基本情報</h3>
           </div>
-          <div className="p-4 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
-              <dt className="text-sm text-gray-500">契約者タイプ</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                {profile.contractorType === 'corporate' ? '法人' : '個人'}
+              <dt className="text-sm text-white/50">契約者タイプ</dt>
+              <dd className="mt-1 text-white">
+                {profile.user.contractorType === 'corporate' ? '法人' : '個人'}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">メールアドレス</dt>
-              <dd className="mt-1 text-sm text-gray-900">{profile.email}</dd>
+              <dt className="text-sm text-white/50">契約者名</dt>
+              <dd className="mt-1 text-white">{profile.user.name || '-'}</dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">電話番号</dt>
-              <dd className="mt-1 text-sm text-gray-900">{profile.phone || '-'}</dd>
+              <dt className="text-sm text-white/50">メールアドレス</dt>
+              <dd className="mt-1 text-white">{profile.user.email}</dd>
             </div>
-          </div>
-        </div>
-
-        {/* 個人情報または法人情報 */}
-        {profile.contractorType === 'individual' ? (
-          <div className="bg-white rounded-lg shadow">
-            <div className="px-4 py-3 border-b border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900">契約者情報</h3>
-            </div>
-            <div className="p-4 space-y-4">
-              <div>
-                <dt className="text-sm text-gray-500">氏名</dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  {profile.lastName} {profile.firstName}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-gray-500">氏名（カナ）</dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  {profile.lastNameKana} {profile.firstNameKana}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-gray-500">生年月日</dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  {formatDate(profile.dateOfBirth)}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-sm text-gray-500">郵便番号</dt>
-                <dd className="mt-1 text-sm text-gray-900">{profile.postalCode || '-'}</dd>
-              </div>
-              <div>
-                <dt className="text-sm text-gray-500">住所</dt>
-                <dd className="mt-1 text-sm text-gray-900">{profile.address || '-'}</dd>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <>
-            <div className="bg-white rounded-lg shadow">
-              <div className="px-4 py-3 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">法人情報</h3>
-              </div>
-              <div className="p-4 space-y-4">
+            {primaryApp && (
+              <>
                 <div>
-                  <dt className="text-sm text-gray-500">会社名</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.companyName || '-'}</dd>
+                  <dt className="text-sm text-white/50">電話番号</dt>
+                  <dd className="mt-1 text-white">{primaryApp.phone || '-'}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-gray-500">会社名（カナ）</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.companyNameKana || '-'}</dd>
+                  <dt className="text-sm text-white/50">郵便番号</dt>
+                  <dd className="mt-1 text-white">{primaryApp.postalCode || '-'}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-gray-500">法人番号</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.corporateNumber || '-'}</dd>
+                  <dt className="text-sm text-white/50">住所</dt>
+                  <dd className="mt-1 text-white">{primaryApp.address || '-'}</dd>
                 </div>
-                <div>
-                  <dt className="text-sm text-gray-500">郵便番号</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.postalCode || '-'}</dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500">住所</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.address || '-'}</dd>
-                </div>
-              </div>
-            </div>
-
-            {/* 代表者情報 */}
-            <div className="bg-white rounded-lg shadow">
-              <div className="px-4 py-3 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">代表者情報</h3>
-              </div>
-              <div className="p-4 space-y-4">
-                <div>
-                  <dt className="text-sm text-gray-500">代表者名</dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    {profile.representativeLastName} {profile.representativeFirstName}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500">代表者名（カナ）</dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    {profile.representativeLastNameKana} {profile.representativeFirstNameKana}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500">生年月日</dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    {formatDate(profile.representativeBirthDate)}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500">郵便番号</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.representativePostalCode || '-'}</dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500">住所</dt>
-                  <dd className="mt-1 text-sm text-gray-900">{profile.representativeAddress || '-'}</dd>
-                </div>
-              </div>
-            </div>
-
-            {/* 担当者情報 */}
-            <div className="bg-white rounded-lg shadow">
-              <div className="px-4 py-3 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">担当者情報</h3>
-              </div>
-              <div className="p-4 space-y-4">
-                <div>
-                  <dt className="text-sm text-gray-500">担当者名</dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    {profile.contactLastName} {profile.contactFirstName}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500">担当者名（カナ）</dt>
-                  <dd className="mt-1 text-sm text-gray-900">
-                    {profile.contactLastNameKana} {profile.contactFirstNameKana}
-                  </dd>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-
-        {/* 書類情報 */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="px-4 py-3 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">登録書類</h3>
-          </div>
-          <div className="p-4 space-y-4">
-            <div>
-              <dt className="text-sm text-gray-500">身分証明書（表）</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                {profile.idCardFrontUrl ? '登録済み' : '未登録'}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-sm text-gray-500">身分証明書（裏）</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                {profile.idCardBackUrl ? '登録済み' : '未登録'}
-              </dd>
-            </div>
-            {profile.contractorType === 'corporate' && (
-              <div>
-                <dt className="text-sm text-gray-500">登記簿謄本</dt>
-                <dd className="mt-1 text-sm text-gray-900">
-                  {profile.registrationUrl ? '登録済み' : '未登録'}
-                </dd>
-              </div>
+              </>
             )}
-            <div>
-              <dt className="text-sm text-gray-500">身分証有効期限</dt>
-              <dd className="mt-1 text-sm text-gray-900">
-                {formatDate(profile.expirationDate)}
-              </dd>
-            </div>
           </div>
         </div>
 
-        {/* パスワード変更 */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="px-4 py-3 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">セキュリティ</h3>
+        {/* セキュリティ */}
+        <div className="bg-black/40 backdrop-blur-sm border border-[#ff0066]/30 rounded-2xl overflow-hidden neon-border">
+          <div className="px-4 sm:px-6 py-4 border-b border-[#ff0066]/20">
+            <h3 className="text-lg font-bold text-white">セキュリティ</h3>
           </div>
-          <div className="p-4">
+          <div className="p-4 sm:p-6">
+            <p className="text-white/70 text-sm mb-4">
+              セキュリティ強化のため、定期的なパスワード変更をお勧めします。
+            </p>
             <Link
               href="/mypage/change-password"
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              className="inline-flex items-center px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 hover:border-[#ff0066]/50 transition-all duration-300"
             >
+              <svg className="w-5 h-5 mr-2 text-[#ff0066]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+              </svg>
               パスワードを変更
             </Link>
+          </div>
+        </div>
+
+        {/* 申込履歴 */}
+        <div className="bg-black/40 backdrop-blur-sm border border-[#ff0066]/30 rounded-2xl overflow-hidden neon-border md:col-span-2">
+          <div className="px-4 sm:px-6 py-4 border-b border-[#ff0066]/20">
+            <h3 className="text-lg font-bold text-white">申込履歴</h3>
+          </div>
+          <div className="p-4 sm:p-6">
+            {profile.applications.length === 0 ? (
+              <p className="text-white/50">申込履歴がありません</p>
+            ) : (
+              <div className="space-y-3">
+                {profile.applications.map((app) => (
+                  <div
+                    key={app.id}
+                    className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10"
+                  >
+                    <div>
+                      <div className="text-white font-medium">
+                        {app.applicantType === 'corporate' ? app.companyName : `${app.lastName} ${app.firstName}`}
+                      </div>
+                      <div className="text-sm text-white/50">ID: {app.id.slice(0, 8)}...</div>
+                    </div>
+                    <span className="text-xs text-[#ff0066]">
+                      {app.applicantType === 'corporate' ? '法人' : '個人'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

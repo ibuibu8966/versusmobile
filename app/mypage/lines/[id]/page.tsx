@@ -26,12 +26,12 @@ interface Line {
 }
 
 const lineStatusLabels: Record<string, { label: string; color: string }> = {
-  not_opened: { label: '未開通', color: 'bg-gray-100 text-gray-800' },
-  opened: { label: '開通済', color: 'bg-green-100 text-green-800' },
-  shipped: { label: '発送済', color: 'bg-blue-100 text-blue-800' },
-  waiting_return: { label: '返却待ち', color: 'bg-yellow-100 text-yellow-800' },
-  returned: { label: '返却済', color: 'bg-purple-100 text-purple-800' },
-  canceled: { label: 'キャンセル', color: 'bg-red-100 text-red-800' },
+  not_opened: { label: '未開通', color: 'bg-white/10 text-white/70 border-white/20' },
+  opened: { label: '開通済', color: 'bg-green-500/20 text-green-400 border-green-500/30' },
+  shipped: { label: '発送済', color: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
+  waiting_return: { label: '返却待ち', color: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' },
+  returned: { label: '返却済', color: 'bg-purple-500/20 text-purple-400 border-purple-500/30' },
+  canceled: { label: 'キャンセル', color: 'bg-red-500/20 text-red-400 border-red-500/30' },
 }
 
 const planTypeLabels: Record<string, string> = {
@@ -52,6 +52,7 @@ export default function LineDetailPage() {
     if (lineId) {
       fetchLineDetail()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lineId])
 
   const fetchLineDetail = async () => {
@@ -94,19 +95,19 @@ export default function LineDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="p-6">
-        <div className="text-center text-gray-500">読み込み中...</div>
+      <div className="p-6 flex items-center justify-center min-h-[50vh]">
+        <div className="text-white/70">読み込み中...</div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="p-6">
-        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+      <div className="p-6 max-w-2xl mx-auto">
+        <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded-lg mb-4">
           {error}
         </div>
-        <Link href="/mypage" className="text-blue-600 hover:text-blue-800">
+        <Link href="/mypage" className="text-[#ff0066] hover:text-[#ff3399] transition-colors">
           ダッシュボードに戻る
         </Link>
       </div>
@@ -117,59 +118,62 @@ export default function LineDetailPage() {
     return null
   }
 
-  const status = lineStatusLabels[line.lineStatus] || { label: line.lineStatus, color: 'bg-gray-100 text-gray-800' }
+  const status = lineStatusLabels[line.lineStatus] || { label: line.lineStatus, color: 'bg-white/10 text-white/70 border-white/20' }
 
   return (
-    <div className="p-6">
-      <div className="mb-6">
-        <Link href="/mypage" className="text-blue-600 hover:text-blue-800 text-sm">
+    <div className="p-4 sm:p-6 max-w-4xl mx-auto">
+      {/* ヘッダー */}
+      <div className="mb-8">
+        <Link href="/mypage" className="text-[#ff0066] hover:text-[#ff3399] text-sm transition-colors">
           &larr; ダッシュボードに戻る
         </Link>
-        <h2 className="text-2xl font-bold text-gray-900 mt-2">回線詳細</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mt-2">
+          回線<span className="text-[#ff0066] neon-text">詳細</span>
+        </h2>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         {/* 回線情報 */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="px-4 py-3 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">回線情報</h3>
+        <div className="bg-black/40 backdrop-blur-sm border border-[#ff0066]/30 rounded-2xl overflow-hidden neon-border">
+          <div className="px-4 sm:px-6 py-4 border-b border-[#ff0066]/20">
+            <h3 className="text-lg font-bold text-white">回線情報</h3>
           </div>
-          <div className="p-4 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
-              <dt className="text-sm text-gray-500">電話番号</dt>
-              <dd className="mt-1 text-lg font-medium text-gray-900">
+              <dt className="text-sm text-white/50">電話番号</dt>
+              <dd className="mt-1 text-xl font-bold text-[#ff0066]">
                 {line.phoneNumber || '-'}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">ICCID</dt>
-              <dd className="mt-1 text-sm text-gray-900 font-mono">
+              <dt className="text-sm text-white/50">ICCID</dt>
+              <dd className="mt-1 text-sm text-white font-mono">
                 {line.iccid || '-'}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">ステータス</dt>
+              <dt className="text-sm text-white/50">ステータス</dt>
               <dd className="mt-1">
-                <span className={`inline-flex px-2 py-1 text-sm font-semibold rounded-full ${status.color}`}>
+                <span className={`inline-flex px-3 py-1 text-sm font-semibold rounded-full border ${status.color}`}>
                   {status.label}
                 </span>
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">契約月</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">契約月</dt>
+              <dd className="mt-1 text-white">
                 {line.contractMonth || '-'}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">発送日</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">発送日</dt>
+              <dd className="mt-1 text-white">
                 {formatDate(line.shipmentDate)}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">返却日</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">返却日</dt>
+              <dd className="mt-1 text-white">
                 {formatDate(line.returnDate)}
               </dd>
             </div>
@@ -177,34 +181,34 @@ export default function LineDetailPage() {
         </div>
 
         {/* 申込情報 */}
-        <div className="bg-white rounded-lg shadow">
-          <div className="px-4 py-3 border-b border-gray-200">
-            <h3 className="text-lg font-medium text-gray-900">申込情報</h3>
+        <div className="bg-black/40 backdrop-blur-sm border border-[#ff0066]/30 rounded-2xl overflow-hidden neon-border">
+          <div className="px-4 sm:px-6 py-4 border-b border-[#ff0066]/20">
+            <h3 className="text-lg font-bold text-white">申込情報</h3>
           </div>
-          <div className="p-4 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div>
-              <dt className="text-sm text-gray-500">契約者名</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">契約者名</dt>
+              <dd className="mt-1 text-white">
                 {line.application.applicantType === 'corporate'
                   ? line.application.companyName
                   : `${line.application.lastName || ''} ${line.application.firstName || ''}`}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">契約者タイプ</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">契約者タイプ</dt>
+              <dd className="mt-1 text-white">
                 {line.application.applicantType === 'corporate' ? '法人' : '個人'}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">プラン</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">プラン</dt>
+              <dd className="mt-1 text-white">
                 {planTypeLabels[line.application.planType] || line.application.planType}
               </dd>
             </div>
             <div>
-              <dt className="text-sm text-gray-500">申込日</dt>
-              <dd className="mt-1 text-sm text-gray-900">
+              <dt className="text-sm text-white/50">申込日</dt>
+              <dd className="mt-1 text-white">
                 {formatDate(line.application.createdAt)}
               </dd>
             </div>
