@@ -35,6 +35,8 @@ type FormData = {
   postalCode: string
   address: string
   dateOfBirth?: string
+  password?: string
+  passwordConfirm?: string
 
   // ステップ2
   planType?: PlanType
@@ -254,8 +256,20 @@ export default function ApplyPage() {
     }
   }
 
+  // パスワードバリデーション
+  const isPasswordValid = () => {
+    return !!(
+      formData.password &&
+      formData.password.length >= 8 &&
+      formData.passwordConfirm &&
+      formData.password === formData.passwordConfirm
+    )
+  }
+
   // ステップ1の入力チェック
   const isStep1Valid = () => {
+    if (!isPasswordValid()) return false
+
     if (formData.applicantType === 'individual') {
       return !!(
         formData.lastName && formData.firstName &&
@@ -498,6 +512,45 @@ export default function ApplyPage() {
                         className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                         required
                       />
+                    </div>
+
+                    {/* パスワード設定 */}
+                    <div className="border-t border-white/10 pt-6 mt-6">
+                      <h3 className="text-xl font-bold text-white mb-4">ログインパスワード設定</h3>
+                      <p className="text-sm text-white/60 mb-4">マイページにログインするためのパスワードを設定してください</p>
+
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-white/80 mb-2">パスワード<span className="text-red-400">*</span></label>
+                          <input
+                            type="password"
+                            value={formData.password || ''}
+                            onChange={(e) => updateFormData({ password: e.target.value })}
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
+                            placeholder="8文字以上"
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white/80 mb-2">パスワード（確認）<span className="text-red-400">*</span></label>
+                          <input
+                            type="password"
+                            value={formData.passwordConfirm || ''}
+                            onChange={(e) => updateFormData({ passwordConfirm: e.target.value })}
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
+                            placeholder="確認用"
+                            required
+                          />
+                        </div>
+
+                        {formData.password && formData.password.length < 8 && (
+                          <p className="text-red-400 text-sm">パスワードは8文字以上で入力してください</p>
+                        )}
+                        {formData.password && formData.passwordConfirm && formData.password !== formData.passwordConfirm && (
+                          <p className="text-red-400 text-sm">パスワードが一致しません</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -761,6 +814,45 @@ export default function ApplyPage() {
                         />
                       </div>
                     </div>
+
+                    {/* パスワード設定 */}
+                    <div className="border-t border-white/10 pt-6 mt-6">
+                      <h3 className="text-xl font-bold text-white mb-4">ログインパスワード設定</h3>
+                      <p className="text-sm text-white/60 mb-4">マイページにログインするためのパスワードを設定してください</p>
+
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-white/80 mb-2">パスワード<span className="text-red-400">*</span></label>
+                          <input
+                            type="password"
+                            value={formData.password || ''}
+                            onChange={(e) => updateFormData({ password: e.target.value })}
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
+                            placeholder="8文字以上"
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label className="block text-white/80 mb-2">パスワード（確認）<span className="text-red-400">*</span></label>
+                          <input
+                            type="password"
+                            value={formData.passwordConfirm || ''}
+                            onChange={(e) => updateFormData({ passwordConfirm: e.target.value })}
+                            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
+                            placeholder="確認用"
+                            required
+                          />
+                        </div>
+
+                        {formData.password && formData.password.length < 8 && (
+                          <p className="text-red-400 text-sm">パスワードは8文字以上で入力してください</p>
+                        )}
+                        {formData.password && formData.passwordConfirm && formData.password !== formData.passwordConfirm && (
+                          <p className="text-red-400 text-sm">パスワードが一致しません</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 )}
 
@@ -804,6 +896,14 @@ export default function ApplyPage() {
                             {!formData.contactFirstNameKana && <li>・ 担当者名（カナ）</li>}
                             {!formData.postalCode && <li>・ 郵便番号</li>}
                             {!formData.address && <li>・ 住所</li>}
+                          </>
+                        )}
+                        {!isPasswordValid() && (
+                          <>
+                            {!formData.password && <li>・ パスワード</li>}
+                            {formData.password && formData.password.length < 8 && <li>・ パスワードは8文字以上</li>}
+                            {!formData.passwordConfirm && <li>・ パスワード（確認）</li>}
+                            {formData.password && formData.passwordConfirm && formData.password !== formData.passwordConfirm && <li>・ パスワードが一致しません</li>}
                           </>
                         )}
                       </ul>

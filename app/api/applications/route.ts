@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import bcrypt from 'bcryptjs'
 
 // Supabaseクライアントを初期化
 const supabase = createClient(
@@ -78,6 +79,13 @@ export async function POST(request: NextRequest) {
     if (!processedData.planType) processedData.planType = ''
     if (!processedData.lineCount) processedData.lineCount = 0
     if (!processedData.totalAmount) processedData.totalAmount = 0
+
+    // パスワードがある場合はハッシュ化
+    if (processedData.password && typeof processedData.password === 'string') {
+      processedData.password = await bcrypt.hash(processedData.password, 10)
+    }
+    // パスワード確認フィールドは保存しない
+    delete processedData.passwordConfirm
 
     // ステップごとにデータを保存
     let application

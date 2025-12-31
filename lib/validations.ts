@@ -136,3 +136,18 @@ export const updateApplicationSchema = z.object({
   comment1: z.string().optional(),
   comment2: z.string().optional(),
 })
+
+// パスワードバリデーション
+export const passwordSchema = z.object({
+  password: z.string().min(8, 'パスワードは8文字以上で入力してください'),
+  passwordConfirm: z.string(),
+}).refine(data => data.password === data.passwordConfirm, {
+  message: 'パスワードが一致しません',
+  path: ['passwordConfirm'],
+})
+
+// ユーザーログインのバリデーション
+export const userLoginSchema = z.object({
+  email: z.string().email('有効なメールアドレスを入力してください'),
+  password: z.string().min(1, 'パスワードを入力してください'),
+})
