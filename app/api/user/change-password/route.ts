@@ -37,33 +37,26 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // メールアドレスと同じパスワードは禁止
-    if (newPassword === session.email) {
-      return NextResponse.json(
-        { error: 'メールアドレスと同じパスワードは使用できません' },
-        { status: 400 }
-      )
-    }
-
+    // 現在のパスワードを検証
     if (session.isContractor) {
-      // Contractorのパスワード変更
-      const { data: contractor } = await supabase
+      // Contractorテーブル
+      const { data: contractor, error } = await supabase
         .from('Contractor')
         .select('*')
         .eq('id', session.id)
         .single()
 
-      if (!contractor) {
+      if (error || !contractor) {
         return NextResponse.json(
           { error: 'ユーザーが見つかりません' },
           { status: 404 }
         )
       }
 
-      // 現在のパスワードを検証
+      // パスワード検証
       if (!contractor.password) {
-        // 初回ログイン時（パスワード未設定）
-        if (currentPassword !== session.email) {
+        // 初回パスワード設定の場合、メールアドレス=現在のパスワード
+        if (currentPassword !== contractor.email) {
           return NextResponse.json(
             { error: '現在のパスワードが正しくありません' },
             { status: 401 }
@@ -79,9 +72,8 @@ export async function POST(request: NextRequest) {
         }
       }
 
-      // 新しいパスワードをハッシュ化して保存
+      // 新しいパスワードをハッシュ化して更新
       const hashedPassword = await bcrypt.hash(newPassword, 10)
-
       const { error: updateError } = await supabase
         .from('Contractor')
         .update({
@@ -99,24 +91,24 @@ export async function POST(request: NextRequest) {
         )
       }
     } else {
-      // Applicationのパスワード変更
-      const { data: application } = await supabase
+      // Applicationテーブル
+      const { data: application, error } = await supabase
         .from('Application')
         .select('*')
         .eq('id', session.id)
         .single()
 
-      if (!application) {
+      if (error || !application) {
         return NextResponse.json(
           { error: 'ユーザーが見つかりません' },
           { status: 404 }
         )
       }
 
-      // 現在のパスワードを検証
+      // パスワード検証
       if (!application.password) {
-        // 初回ログイン時（パスワード未設定）
-        if (currentPassword !== session.email) {
+        // 初回パスワード設定の場合、メールアドレス=現在のパスワード
+        if (currentPassword !== application.email) {
           return NextResponse.json(
             { error: '現在のパスワードが正しくありません' },
             { status: 401 }
@@ -132,9 +124,8 @@ export async function POST(request: NextRequest) {
         }
       }
 
-      // 新しいパスワードをハッシュ化して保存
+      // 新しいパスワードをハッシュ化して更新
       const hashedPassword = await bcrypt.hash(newPassword, 10)
-
       const { error: updateError } = await supabase
         .from('Application')
         .update({
@@ -152,32 +143,29 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 新しいセッショントークンを発行（mustChangePasswordをfalseに更新）
-    const newSession: UserSession = {
+    // 新しいトークンを発行（mustChangePassword=falseに更新）
+    const updatedSession: UserSession = {
       ...session,
       mustChangePassword: false,
     }
+    const token = await createUserToken(updatedSession)
 
-    const token = await createUserToken(newSession)
-
-    const response = NextResponse.json({
-      success: true,
-      message: 'パスワードを変更しました',
-    })
+    const response = NextResponse.json({ success: true })
 
     response.cookies.set('user-token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 60 * 24 * 7, // 7日間
       path: '/',
     })
 
     return response
   } catch (error) {
     console.error('パスワード変更エラー:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'パスワード変更に失敗しました' },
+      { error: 'パスワードの変更に失敗しました', details: errorMessage },
       { status: 500 }
     )
   }

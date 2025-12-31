@@ -7,7 +7,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 )
 
-// GET: 契約者情報取得
+// GET: ユーザープロフィール取得
 export async function GET(request: NextRequest) {
   try {
     const session = await getUserSession(request)
@@ -19,112 +19,82 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    if (session.mustChangePassword) {
-      return NextResponse.json(
-        { error: 'パスワード変更が必要です', requirePasswordChange: true },
-        { status: 403 }
-      )
-    }
-
-    let profile
+    let user = null
+    let contractor = null
+    let applications: unknown[] = []
 
     if (session.isContractor) {
-      // Contractorから取得
+      // Contractorから情報取得
       const { data, error } = await supabase
         .from('Contractor')
         .select('*')
         .eq('id', session.id)
         .single()
 
-      if (error) {
-        console.error('契約者情報取得エラー:', error)
+      if (error || !data) {
         return NextResponse.json(
-          { error: '契約者情報の取得に失敗しました' },
-          { status: 500 }
+          { error: 'ユーザー情報が見つかりません' },
+          { status: 404 }
         )
       }
 
-      profile = {
-        contractorType: data.contractorType,
+      contractor = data
+      user = {
+        id: data.id,
         email: data.email,
-        // 個人情報
-        lastName: data.lastName,
-        firstName: data.firstName,
-        lastNameKana: data.lastNameKana,
-        firstNameKana: data.firstNameKana,
-        // 法人情報
-        companyName: data.companyName,
-        companyNameKana: data.companyNameKana,
-        corporateNumber: data.corporateNumber,
-        // 共通情報
-        phone: data.phone,
-        postalCode: data.postalCode,
-        address: data.address,
-        // 書類情報
-        idCardFrontUrl: data.idCardFrontUrl,
-        idCardBackUrl: data.idCardBackUrl,
-        registrationUrl: data.registrationUrl,
-        expirationDate: data.expirationDate,
+        name: data.contractorType === 'corporate'
+          ? data.companyName || ''
+          : `${data.lastName || ''} ${data.firstName || ''}`.trim(),
+        contractorType: data.contractorType,
       }
-    } else {
-      // Applicationから取得
-      const { data, error } = await supabase
+
+      // 紐づく申込を取得
+      const { data: apps } = await supabase
         .from('Application')
         .select('*')
-        .eq('id', session.id)
-        .single()
+        .eq('contractorId', session.id)
+        .order('createdAt', { ascending: false })
 
-      if (error) {
-        console.error('契約者情報取得エラー:', error)
+      applications = apps || []
+    } else {
+      // Applicationから情報取得（最新の申込）
+      const { data: apps, error } = await supabase
+        .from('Application')
+        .select('*')
+        .eq('email', session.email)
+        .neq('status', 'draft')
+        .order('createdAt', { ascending: false })
+
+      if (error || !apps || apps.length === 0) {
         return NextResponse.json(
-          { error: '契約者情報の取得に失敗しました' },
-          { status: 500 }
+          { error: 'ユーザー情報が見つかりません' },
+          { status: 404 }
         )
       }
 
-      profile = {
-        contractorType: data.applicantType,
-        email: data.email,
-        // 個人情報
-        lastName: data.lastName,
-        firstName: data.firstName,
-        lastNameKana: data.lastNameKana,
-        firstNameKana: data.firstNameKana,
-        // 法人情報
-        companyName: data.companyName,
-        companyNameKana: data.companyNameKana,
-        corporateNumber: data.corporateNumber,
-        // 代表者情報（法人のみ）
-        representativeLastName: data.representativeLastName,
-        representativeFirstName: data.representativeFirstName,
-        representativeLastNameKana: data.representativeLastNameKana,
-        representativeFirstNameKana: data.representativeFirstNameKana,
-        representativeBirthDate: data.representativeBirthDate,
-        representativePostalCode: data.representativePostalCode,
-        representativeAddress: data.representativeAddress,
-        // 担当者情報（法人のみ）
-        contactLastName: data.contactLastName,
-        contactFirstName: data.contactFirstName,
-        contactLastNameKana: data.contactLastNameKana,
-        contactFirstNameKana: data.contactFirstNameKana,
-        // 共通情報
-        phone: data.phone,
-        postalCode: data.postalCode,
-        address: data.address,
-        dateOfBirth: data.dateOfBirth,
-        // 書類情報
-        idCardFrontUrl: data.idCardFrontUrl,
-        idCardBackUrl: data.idCardBackUrl,
-        registrationUrl: data.registrationUrl,
-        expirationDate: data.expirationDate,
+      applications = apps
+      const primaryApp = apps[0]
+
+      user = {
+        id: primaryApp.id,
+        email: primaryApp.email,
+        name: primaryApp.applicantType === 'corporate'
+          ? primaryApp.companyName || ''
+          : `${primaryApp.lastName || ''} ${primaryApp.firstName || ''}`.trim(),
+        contractorType: primaryApp.applicantType,
       }
     }
 
-    return NextResponse.json({ profile })
+    return NextResponse.json({
+      user,
+      contractor,
+      applications,
+      mustChangePassword: session.mustChangePassword,
+    })
   } catch (error) {
-    console.error('契約者情報取得エラー:', error)
+    console.error('プロフィール取得エラー:', error)
     return NextResponse.json(
-      { error: '契約者情報の取得に失敗しました' },
+      { error: 'プロフィールの取得に失敗しました' },
       { status: 500 }
     )
   }

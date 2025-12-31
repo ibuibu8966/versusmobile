@@ -7,7 +7,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 )
 
-// GET: 自分の申込一覧
+// GET: ユーザーの申込一覧取得
 export async function GET(request: NextRequest) {
   try {
     const session = await getUserSession(request)
@@ -19,17 +19,10 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    if (session.mustChangePassword) {
-      return NextResponse.json(
-        { error: 'パスワード変更が必要です', requirePasswordChange: true },
-        { status: 403 }
-      )
-    }
-
-    let applications
+    let applications: unknown[] = []
 
     if (session.isContractor) {
-      // Contractorの場合、紐づくすべてのApplicationを取得
+      // Contractorに紐づく申込を取得
       const { data, error } = await supabase
         .from('Application')
         .select('*, lines:Line(*)')
@@ -39,37 +32,37 @@ export async function GET(request: NextRequest) {
       if (error) {
         console.error('申込取得エラー:', error)
         return NextResponse.json(
-          { error: '申込情報の取得に失敗しました' },
+          { error: '申込の取得に失敗しました' },
           { status: 500 }
         )
       }
 
-      applications = data
+      applications = data || []
     } else {
-      // Applicationの場合、同じメールアドレスのすべてのApplicationを取得
+      // メールアドレスで申込を取得（submitted以上のステータス）
       const { data, error } = await supabase
         .from('Application')
         .select('*, lines:Line(*)')
         .eq('email', session.email)
-        .eq('status', 'completed')
+        .neq('status', 'draft')
         .order('createdAt', { ascending: false })
 
       if (error) {
         console.error('申込取得エラー:', error)
         return NextResponse.json(
-          { error: '申込情報の取得に失敗しました' },
+          { error: '申込の取得に失敗しました' },
           { status: 500 }
         )
       }
 
-      applications = data
+      applications = data || []
     }
 
     return NextResponse.json({ applications })
   } catch (error) {
     console.error('申込一覧取得エラー:', error)
     return NextResponse.json(
-      { error: '申込情報の取得に失敗しました' },
+      { error: '申込の取得に失敗しました' },
       { status: 500 }
     )
   }
