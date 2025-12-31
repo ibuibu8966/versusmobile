@@ -88,11 +88,12 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. Contractorが見つからない場合、Applicationを検索
+    // submitted または completed ステータスの申込でログイン可能
     const { data: applications } = await supabase
       .from('Application')
       .select('*')
       .eq('email', email)
-      .eq('status', 'completed')
+      .in('status', ['submitted', 'completed'])
       .order('createdAt', { ascending: false })
       .limit(1)
 
