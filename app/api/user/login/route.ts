@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 1. まずContractorを検索
+    // 1. まずContractorテーブルを検索
     const { data: contractor } = await supabase
       .from('Contractor')
       .select('*')
@@ -29,9 +29,9 @@ export async function POST(request: NextRequest) {
       .single()
 
     if (contractor) {
-      // Contractorが見つかった場合
+      // Contractorが存在する場合
       if (!contractor.password) {
-        // パスワード未設定の場合（初回ログイン）、メールアドレスがパスワード
+        // パスワード未設定の場合、メールアドレス=パスワードで認証
         if (password !== email) {
           return NextResponse.json(
             { error: 'メールアドレスまたはパスワードが正しくありません' },
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
           )
         }
       } else {
-        // パスワードが設定されている場合
+        // パスワードが設定済みの場合
         const isValid = await bcrypt.compare(password, contractor.password)
         if (!isValid) {
           return NextResponse.json(
@@ -55,11 +55,12 @@ export async function POST(request: NextRequest) {
         .update({ lastLoginAt: new Date().toISOString() })
         .eq('id', contractor.id)
 
-      const name = contractor.contractorType === 'individual'
-        ? `${contractor.lastName || ''} ${contractor.firstName || ''}`.trim()
-        : contractor.companyName || ''
+      // ユーザー名を生成
+      const name = contractor.contractorType === 'corporate'
+        ? contractor.companyName || ''
+        : `${contractor.lastName || ''} ${contractor.firstName || ''}`.trim()
 
-      const session: UserSession = {
+      const userSession: UserSession = {
         id: contractor.id,
         email: contractor.email,
         name,
@@ -68,11 +69,16 @@ export async function POST(request: NextRequest) {
         isContractor: true,
       }
 
-      const token = await createUserToken(session)
+      const token = await createUserToken(userSession)
 
       const response = NextResponse.json({
         success: true,
-        user: session,
+        user: {
+          id: contractor.id,
+          email: contractor.email,
+          name,
+          contractorType: contractor.contractorType,
+        },
         mustChangePassword: contractor.mustChangePassword,
       })
 
@@ -80,35 +86,43 @@ export async function POST(request: NextRequest) {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         sameSite: 'lax',
-        maxAge: 60 * 60 * 24 * 7, // 7 days
+        maxAge: 60 * 60 * 24 * 7, // 7日間
         path: '/',
       })
 
       return response
     }
 
-    // 2. Contractorが見つからない場合、Applicationを検索
-    // submitted または completed ステータスの申込でログイン可能
-    const { data: applications } = await supabase
+    // 2. Contractorがない場合、Applicationテーブルを検索（submitted状態のもの）
+    const { data: applications, error: appError } = await supabase
       .from('Application')
       .select('*')
       .eq('email', email)
-      .in('status', ['submitted', 'completed'])
+      .eq('status', 'submitted')
       .order('createdAt', { ascending: false })
-      .limit(1)
 
-    if (!applications || applications.length === 0) {
+    console.log('ログイン試行:', { email, found: applications?.length, error: appError })
+
+    if (appError || !applications || applications.length === 0) {
+      // デバッグ用: 全てのステータスで検索
+      const { data: allApps } = await supabase
+        .from('Application')
+        .select('id, email, status')
+        .eq('email', email)
+      console.log('全申込（デバッグ）:', allApps)
+
       return NextResponse.json(
         { error: 'メールアドレスまたはパスワードが正しくありません' },
         { status: 401 }
       )
     }
 
+    // 最新の申込を使用
     const application = applications[0]
 
-    // パスワード検証
+    // パスワードチェック
     if (!application.password) {
-      // パスワード未設定の場合（既存ユーザー）、メールアドレスがパスワード
+      // パスワード未設定の場合、メールアドレス=パスワードで認証
       if (password !== email) {
         return NextResponse.json(
           { error: 'メールアドレスまたはパスワードが正しくありません' },
@@ -116,7 +130,7 @@ export async function POST(request: NextRequest) {
         )
       }
     } else {
-      // パスワードが設定されている場合
+      // パスワードが設定済みの場合
       const isValid = await bcrypt.compare(password, application.password)
       if (!isValid) {
         return NextResponse.json(
@@ -126,14 +140,15 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const name = application.applicantType === 'individual'
-      ? `${application.lastName || ''} ${application.firstName || ''}`.trim()
-      : application.companyName || ''
-
-    // 初回ログインの場合（パスワード未設定）はパスワード変更必須
+    // パスワード未設定の場合、初回ログインとしてmustChangePasswordをtrueにする
     const mustChangePassword = !application.password
 
-    const session: UserSession = {
+    // ユーザー名を生成
+    const name = application.applicantType === 'corporate'
+      ? application.companyName || ''
+      : `${application.lastName || ''} ${application.firstName || ''}`.trim()
+
+    const userSession: UserSession = {
       id: application.id,
       email: application.email,
       name,
@@ -142,11 +157,16 @@ export async function POST(request: NextRequest) {
       isContractor: false,
     }
 
-    const token = await createUserToken(session)
+    const token = await createUserToken(userSession)
 
     const response = NextResponse.json({
       success: true,
-      user: session,
+      user: {
+        id: application.id,
+        email: application.email,
+        name,
+        contractorType: application.applicantType,
+      },
       mustChangePassword,
     })
 
@@ -154,7 +174,7 @@ export async function POST(request: NextRequest) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      maxAge: 60 * 60 * 24 * 7, // 7日間
       path: '/',
     })
 
