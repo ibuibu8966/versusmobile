@@ -23,10 +23,10 @@ export default function PriceTable() {
       <div className="container mx-auto max-w-7xl relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="text-white">認証用SIM</span>
-            <span className="text-[#ff0066] neon-text">料金プラン</span>
+            <span className="text-white" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>認証用SIM</span>
+            <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>料金プラン</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-white/60 text-lg max-w-2xl mx-auto" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>
             SMS認証・音声通話・データ通信対応。シンプルな1回払い。
           </p>
         </div>
@@ -41,7 +41,7 @@ export default function PriceTable() {
             <div className="text-center">
               <div className="text-[#ff3399] text-sm font-semibold mb-3">50回線以上</div>
               <div className="text-5xl font-bold mb-3">
-                <span className="text-[#ff0066] neon-text">¥3,300</span>
+                <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>¥3,300</span>
                 <span className="text-white/60 text-xl">/回線</span>
               </div>
               <div className="text-white/70 text-sm">1回払い・税込</div>
@@ -53,7 +53,7 @@ export default function PriceTable() {
             <div className="text-center">
               <div className="text-[#ff3399] text-sm font-semibold mb-3">50回線未満</div>
               <div className="text-5xl font-bold mb-3">
-                <span className="text-[#ff0066] neon-text">¥3,600</span>
+                <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>¥3,600</span>
                 <span className="text-white/60 text-xl">/回線</span>
               </div>
               <div className="text-white/70 text-sm">1回払い・税込</div>
@@ -64,7 +64,7 @@ export default function PriceTable() {
         {/* Features */}
         <div className="bg-black/50 backdrop-blur-sm border border-[#ff0066]/30 rounded-3xl p-8 max-w-4xl mx-auto">
           <h3 className="text-xl font-bold text-white mb-6 text-center">
-            <span className="text-[#ff0066] drop-shadow-[0_0_10px_#ff0066]">認証用SIMの特徴</span>
+            <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>認証用SIMの特徴</span>
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

@@ -50,20 +50,20 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight px-2">
-              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block" style={{WebkitTextStroke: '1px rgba(0,0,0,0.5)'}}>認証の相棒。</span>
-              <span className="text-[#ff0066] neon-text animate-neon-pulse block mt-2" style={{WebkitTextStroke: '2px black', textShadow: '0 0 20px #ff0066, 0 0 40px #ff0066'}}>
+              <span className="text-white block" style={{WebkitTextStroke: '0.5px rgba(0,0,0,0.8)', textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(255,255,255,0.3)'}}>認証の相棒。</span>
+              <span className="text-[#ff0066] neon-text animate-neon-pulse block mt-2" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 20px #ff0066, 0 0 40px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>
                 SMS・音声・データ
               </span>
-              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block mt-2" style={{WebkitTextStroke: '1px rgba(0,0,0,0.5)'}}>すべて対応。</span>
+              <span className="text-white block mt-2" style={{WebkitTextStroke: '0.5px rgba(0,0,0,0.8)', textShadow: '0 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(255,255,255,0.3)'}}>すべて対応。</span>
             </h1>
 
             <p className="text-lg sm:text-2xl md:text-3xl text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
-              <span className="text-[#ff3399] font-bold block sm:inline" style={{WebkitTextStroke: '1px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399'}}>認証用SIM</span>
-              <span className="mx-2 hidden sm:inline drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">・</span>
-              <span className="text-white block sm:inline mt-1 sm:mt-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">1回払いでシンプル</span>
+              <span className="text-[#ff3399] font-bold block sm:inline" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399, 0 2px 4px rgba(0,0,0,0.9)'}}>認証用SIM</span>
+              <span className="mx-2 hidden sm:inline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>・</span>
+              <span className="text-white block sm:inline mt-1 sm:mt-0" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>1回払いでシンプル</span>
               <br className="my-2" />
-              <span className="text-white/80 text-base sm:text-xl block sm:inline drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">翌月末自動解約で</span>
-              <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0" style={{WebkitTextStroke: '1px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399'}}>手続き不要</span>
+              <span className="text-white/80 text-base sm:text-xl block sm:inline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>翌月末自動解約で</span>
+              <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399, 0 2px 4px rgba(0,0,0,0.9)'}}>手続き不要</span>
             </p>
 
             {/* CTA Buttons */}
@@ -83,9 +83,9 @@ export default function HomePage() {
               <div className="absolute top-0 left-0 w-12 h-12 sm:w-20 sm:h-20 border-t-2 border-l-2 sm:border-t-4 sm:border-l-4 border-[#ff3399] rounded-tl-2xl sm:rounded-tl-3xl" style={{boxShadow: '0 0 10px #ff3399, 0 0 20px #ff3399'}}></div>
               <div className="absolute bottom-0 right-0 w-12 h-12 sm:w-20 sm:h-20 border-b-2 border-r-2 sm:border-b-4 sm:border-r-4 border-[#ff3399] rounded-br-2xl sm:rounded-br-3xl" style={{boxShadow: '0 0 10px #ff3399, 0 0 20px #ff3399'}}></div>
 
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ff3399] mb-4 sm:mb-6 neon-text px-4">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ff3399] mb-4 sm:mb-6 px-4" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399, 0 2px 4px rgba(0,0,0,0.9)'}}>
                 <span className="block">認証用SIMプラン</span>
-                <span className="block text-base sm:text-xl text-white/80 mt-2" style={{textShadow: 'none'}}>（SMS・音声・データ対応）</span>
+                <span className="block text-base sm:text-xl text-white/80 mt-2" style={{WebkitTextStroke: 'none', textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>（SMS・音声・データ対応）</span>
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 text-left px-2">
@@ -95,7 +95,7 @@ export default function HomePage() {
                   </div>
                   <div className="text-[#ff3399] text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">50回線以上</div>
                   <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-3">
-                    <span className="text-[#ff0066] neon-text">¥3,300</span>
+                    <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>¥3,300</span>
                     <span className="text-base sm:text-xl text-white/60">/回線</span>
                   </div>
                   <div className="text-white/80 text-xs sm:text-sm">1回払い・税込</div>
@@ -104,7 +104,7 @@ export default function HomePage() {
                 <div className="relative bg-black/70 rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-[#ff0066]/60 neon-box-hover transition-all duration-300 transform hover:scale-105">
                   <div className="text-[#ff3399] text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">50回線未満</div>
                   <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-3">
-                    <span className="text-[#ff0066] neon-text">¥3,600</span>
+                    <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>¥3,600</span>
                     <span className="text-base sm:text-xl text-white/60">/回線</span>
                   </div>
                   <div className="text-white/80 text-xs sm:text-sm">1回払い・税込</div>
@@ -144,8 +144,8 @@ export default function HomePage() {
         <div className="container mx-auto max-w-7xl relative z-10">
           <div className="text-center mb-12 sm:mb-16 px-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              <span className="text-white">選ばれる</span>
-              <span className="text-[#ff0066] neon-text">3つの理由</span>
+              <span className="text-white" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>選ばれる</span>
+              <span className="text-[#ff0066]" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>3つの理由</span>
             </h2>
           </div>
 
@@ -288,9 +288,9 @@ export default function HomePage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#ff0066]/20 rounded-full blur-[120px]"></div>
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-white">
-            <span className="text-[#ff0066] neon-text animate-neon-pulse">今すぐ始めましょう</span>
+            <span className="text-[#ff0066] animate-neon-pulse" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff0066, 0 0 30px #ff0066, 0 2px 4px rgba(0,0,0,0.9)'}}>今すぐ始めましょう</span>
           </h2>
-          <p className="text-white/70 text-lg mb-8">
+          <p className="text-white/70 text-lg mb-8" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>
             シンプルな料金、明確なサービス。VERSUS MOBILEで快適な通信環境を。
           </p>
           <div className="flex justify-center items-center">
