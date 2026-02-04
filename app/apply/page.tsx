@@ -989,13 +989,33 @@ export default function ApplyPage() {
                             <span className="text-sm text-white/60 ml-2">（50回線以上で入力してください）</span>
                           )}
                           {formData.planType === 'auth-under50' && (
-                            <span className="text-sm text-white/60 ml-2">（50回線未満で入力してください）</span>
+                            <span className="text-sm text-white/60 ml-2">（1〜49回線で入力してください）</span>
                           )}
                         </label>
                         <input
                           type="number"
                           value={formData.lineCount || ''}
-                          onChange={(e) => updateFormData({ lineCount: parseInt(e.target.value) || 0 })}
+                          onChange={(e) => {
+                            const value = parseInt(e.target.value) || 0
+                            if (formData.planType === 'auth-50plus') {
+                              // 50回線以上: 最小50
+                              updateFormData({ lineCount: Math.max(50, value) })
+                            } else if (formData.planType === 'auth-under50') {
+                              // 50回線未満: 1〜49
+                              updateFormData({ lineCount: Math.min(49, Math.max(1, value)) })
+                            } else {
+                              updateFormData({ lineCount: value })
+                            }
+                          }}
+                          onBlur={() => {
+                            // フォーカスが外れた時にも値を補正
+                            if (formData.planType === 'auth-50plus' && formData.lineCount < 50) {
+                              updateFormData({ lineCount: 50 })
+                            } else if (formData.planType === 'auth-under50') {
+                              if (formData.lineCount < 1) updateFormData({ lineCount: 1 })
+                              if (formData.lineCount >= 50) updateFormData({ lineCount: 49 })
+                            }
+                          }}
                           min={formData.planType === 'auth-50plus' ? 50 : 1}
                           max={formData.planType === 'auth-under50' ? 49 : undefined}
                           className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
