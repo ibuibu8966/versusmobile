@@ -1009,11 +1009,12 @@ export default function ApplyPage() {
                           }}
                           onBlur={() => {
                             // フォーカスが外れた時にも値を補正
-                            if (formData.planType === 'auth-50plus' && formData.lineCount < 50) {
+                            const count = formData.lineCount ?? 0
+                            if (formData.planType === 'auth-50plus' && count < 50) {
                               updateFormData({ lineCount: 50 })
                             } else if (formData.planType === 'auth-under50') {
-                              if (formData.lineCount < 1) updateFormData({ lineCount: 1 })
-                              if (formData.lineCount >= 50) updateFormData({ lineCount: 49 })
+                              if (count < 1) updateFormData({ lineCount: 1 })
+                              if (count >= 50) updateFormData({ lineCount: 49 })
                             }
                           }}
                           min={formData.planType === 'auth-50plus' ? 50 : 1}
