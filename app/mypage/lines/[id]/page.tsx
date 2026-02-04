@@ -35,8 +35,8 @@ const lineStatusLabels: Record<string, { label: string; color: string }> = {
 }
 
 const planTypeLabels: Record<string, string> = {
-  '3month-50plus': '50回線以上プラン',
-  '3month-under50': '50回線未満プラン',
+  'auth-50plus': '認証用SIM（50回線以上）',
+  'auth-under50': '認証用SIM（50回線未満）',
 }
 
 export default function LineDetailPage() {

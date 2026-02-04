@@ -332,7 +332,7 @@ export default function ApplyPage() {
           {/* ヘッダー */}
           <div className="text-center mb-12">
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
-              <span className="text-white">3ヶ月パック</span>
+              <span className="text-white">認証用SIMプラン</span>
               <span className="text-[#ff0066] ml-2">お申し込み</span>
             </h1>
           </div>
@@ -974,7 +974,7 @@ export default function ApplyPage() {
                           <p className="text-yellow-500 font-semibold mb-1">ご利用上の注意</p>
                           <ul className="text-white/70 text-sm space-y-1">
                             <li>・MNP（番号ポータビリティ）は転入・転出ともに不可です</li>
-                            <li>・お申込み月の翌月末に自動的に解約となります</li>
+                            <li>・お申込み月の当月末に自動的に解約となります</li>
                           </ul>
                         </div>
                       </div>
@@ -1346,7 +1346,7 @@ export default function ApplyPage() {
                       </div>
                       <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-white/60">解約</span>
-                        <span>翌月末自動解約</span>
+                        <span>当月末自動解約</span>
                       </div>
                       <div className="flex justify-between py-2 text-xl font-bold">
                         <span className="text-white">合計金額</span>

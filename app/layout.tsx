@@ -14,18 +14,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://versusmobile.vercel.app"),
-  title: "VERSUS MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
-  description: "1GB/月880円・音声＋SMS込み。重い月は100GB目安（10GB/3日）で使い倒せる。個人向けと100回線以上の継続利用向けプランをご用意。",
+  title: "VERSUS MOBILE - 認証用SIMプラン。SMS・音声・データ対応。",
+  description: "認証用SIMプラン。SMS・音声・データ対応。50回線以上¥3,300、50回線未満¥3,600の1回払い。MNP不可・当月末自動解約。",
   applicationName: "VERSUS MOBILE",
-  keywords: ["MVNO", "格安SIM", "音声通話", "モバイル", "仕入れ", "VERSUS MOBILE"],
+  keywords: ["MVNO", "格安SIM", "認証用SIM", "SMS認証", "音声認証", "VERSUS MOBILE"],
   authors: [{ name: "VERSUS MOBILE" }],
   openGraph: {
     type: "website",
     locale: "ja_JP",
     url: "https://versusmobile.vercel.app/",
     siteName: "VERSUS MOBILE",
-    title: "VERSUS MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
-    description: "1GB/月880円・音声＋SMS込み。重い月は100GB目安（10GB/3日）で使い倒せる。",
+    title: "VERSUS MOBILE - 認証用SIMプラン。SMS・音声・データ対応。",
+    description: "認証用SIMプラン。SMS・音声・データ対応。50回線以上¥3,300、50回線未満¥3,600の1回払い。",
     images: [
       {
         url: "/images/versus-logo.jpg",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VERSUS MOBILE - 仕入れの相棒。音声込みで使うぶんだけに最適化。",
-    description: "1GB/月880円・音声＋SMS込み。重い月は100GB目安（10GB/3日）で使い倒せる。",
+    title: "VERSUS MOBILE - 認証用SIMプラン。SMS・音声・データ対応。",
+    description: "認証用SIMプラン。SMS・音声・データ対応。50回線以上¥3,300、50回線未満¥3,600の1回払い。",
     images: ["/images/versus-logo.jpg"],
   },
   icons: {

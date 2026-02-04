@@ -116,8 +116,8 @@ export default function PriceTable() {
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <div>
-                  <span className="text-white font-medium">翌月末自動解約</span>
-                  <p className="text-white/60 mt-1">お申込み月の翌月末に自動的に解約となります</p>
+                  <span className="text-white font-medium">当月末自動解約</span>
+                  <p className="text-white/60 mt-1">お申込み月の当月末に自動的に解約となります</p>
                 </div>
               </div>
             </div>

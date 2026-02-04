@@ -9,7 +9,7 @@ const supabase = createClient(
 
 // 料金計算
 function calculateTotalAmount(planType: string, lineCount: number): number {
-  const pricePerLine = planType === '3month-50plus' ? 4200 : 4600
+  const pricePerLine = planType === 'auth-50plus' ? 3300 : 3600
   return pricePerLine * lineCount
 }
 
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     const { planType, lineCount } = body
 
     // バリデーション
-    if (!planType || !['3month-50plus', '3month-under50'].includes(planType)) {
+    if (!planType || !['auth-50plus', 'auth-under50'].includes(planType)) {
       return NextResponse.json(
         { error: '有効なプランを選択してください' },
         { status: 400 }
@@ -51,14 +51,14 @@ export async function POST(request: NextRequest) {
     }
 
     // プランに応じた回線数チェック
-    if (planType === '3month-50plus' && lineCount < 50) {
+    if (planType === 'auth-50plus' && lineCount < 50) {
       return NextResponse.json(
         { error: '50回線以上プランは50回線以上の契約が必要です' },
         { status: 400 }
       )
     }
 
-    if (planType === '3month-under50' && lineCount >= 50) {
+    if (planType === 'auth-under50' && lineCount >= 50) {
       return NextResponse.json(
         { error: '50回線未満プランは49回線以下の契約が必要です' },
         { status: 400 }

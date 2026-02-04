@@ -20,20 +20,20 @@ interface Profile {
 
 const planOptions = [
   {
-    id: '3month-50plus',
-    name: '50回線以上プラン',
-    price: 4200,
+    id: 'auth-50plus',
+    name: '認証用SIM（50回線以上）',
+    price: 3300,
     minLines: 50,
     maxLines: 1000,
-    description: '3ヶ月契約・50回線以上',
+    description: '1回払い・50回線以上',
   },
   {
-    id: '3month-under50',
-    name: '50回線未満プラン',
-    price: 4600,
+    id: 'auth-under50',
+    name: '認証用SIM（50回線未満）',
+    price: 3600,
     minLines: 1,
     maxLines: 49,
-    description: '3ヶ月契約・1〜49回線',
+    description: '1回払い・1〜49回線',
   },
 ]
 

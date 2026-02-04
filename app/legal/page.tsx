@@ -50,11 +50,10 @@ export default function LegalPage() {
 
               <div>
                 <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">販売価格</h2>
-                <p>各プラン料金表に記載（税込価格）</p>
+                <p>認証用SIMプラン（税込価格・1回払い）</p>
                 <ul className="list-disc list-inside mt-2 space-y-1 text-sm">
-                  <li>標準プラン: 1GB 880円 〜 100GB目安 4,580円/月</li>
-                  <li>100回線以上（継続）専用: 1GB 780円 〜 100GB目安 4,480円/月</li>
-                  <li>初期費用（3ヶ月パック）: 50回線以上 4,200円/回線、50回線未満 4,600円/回線</li>
+                  <li>認証用SIM（50回線以上）: ¥3,300/回線</li>
+                  <li>認証用SIM（50回線未満）: ¥3,600/回線</li>
                 </ul>
               </div>
 
@@ -63,9 +62,6 @@ export default function LegalPage() {
                 <ul className="list-disc list-inside space-y-1">
                   <li>ユニバーサルサービス料: 2円/月</li>
                   <li>電話リレーサービス料: 1円/月</li>
-                  <li>追加データ: 500MB 770円、1GB 1,320円</li>
-                  <li>従量通話: 11円/30秒（税込）</li>
-                  <li>各種通話定額オプション</li>
                   <li>銀行振込の場合: 振込手数料（お客様負担）</li>
                 </ul>
               </div>
@@ -86,8 +82,7 @@ export default function LegalPage() {
               <div>
                 <h2 className="text-[#ff0066] font-semibold mb-2 text-lg">支払時期</h2>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>月末締め翌月請求</li>
-                  <li>従量通話などの従量課金分は翌々月に合算</li>
+                  <li>申込時に1回払い</li>
                 </ul>
               </div>
 
@@ -109,7 +104,10 @@ export default function LegalPage() {
                     <strong>交換:</strong> 不良SIMの場合は再発行（手数料あり）
                   </li>
                   <li>
-                    <strong>解約:</strong> 解約金なし。当月解約申請で当月末解約（日割りなし）
+                    <strong>解約:</strong> 解約金なし。お申込み月の当月末に自動解約（手続き不要）
+                  </li>
+                  <li>
+                    <strong>MNP:</strong> 転入・転出ともに不可
                   </li>
                 </ul>
               </div>
@@ -176,18 +174,9 @@ export default function LegalPage() {
 
                   <div>
                     <h3 className="text-white font-semibold mb-3">フェアユースポリシー（速度制御）</h3>
-                    <p className="mb-3">
-                      各プランに3日間合計の上限があり、超過時は当該期間256kbpsに速度制御されます。
+                    <p>
+                      ネットワークの混雑回避や品質維持のため、通信速度を制御する場合があります。
                     </p>
-                    <h4 className="text-white/90 font-semibold mb-2">各プランの3日間上限</h4>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>1GBプラン：100MB/3日</li>
-                      <li>3GBプラン：500MB/3日</li>
-                      <li>7.5GBプラン：1GB/3日</li>
-                      <li>10GBプラン：1.5GB/3日</li>
-                      <li>20GBプラン：3GB/3日</li>
-                      <li>100GB目安プラン：10GB/3日</li>
-                    </ul>
                   </div>
 
                   <div>
@@ -212,9 +201,9 @@ export default function LegalPage() {
 
                   <div>
                     <h3 className="text-white font-semibold mb-3">最低利用期間・解約金</h3>
-                    <p>最低利用期間：なし</p>
+                    <p>当月末自動解約（手続き不要）</p>
                     <p>解約金：0円</p>
-                    <p className="text-white/60 text-sm mt-2">※ 初回3ヶ月パックは返金不可</p>
+                    <p className="text-white/60 text-sm mt-2">※ MNP転入・転出は不可</p>
                   </div>
 
                   <div>

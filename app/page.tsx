@@ -62,7 +62,7 @@ export default function HomePage() {
               <span className="mx-2 hidden sm:inline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>・</span>
               <span className="text-white block sm:inline mt-1 sm:mt-0" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>1回払いでシンプル</span>
               <br className="my-2" />
-              <span className="text-white/80 text-base sm:text-xl block sm:inline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>翌月末自動解約で</span>
+              <span className="text-white/80 text-base sm:text-xl block sm:inline" style={{textShadow: '0 2px 4px rgba(0,0,0,0.8)'}}>当月末自動解約で</span>
               <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0" style={{WebkitTextStroke: '0.5px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399, 0 2px 4px rgba(0,0,0,0.9)'}}>手続き不要</span>
             </p>
 
@@ -123,7 +123,7 @@ export default function HomePage() {
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff0066] mr-2 drop-shadow-[0_0_5px_#ff0066]" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
-                    翌月末自動解約
+                    当月末自動解約
                   </span>
                 </p>
               </div>
@@ -215,7 +215,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">自動解約</h3>
               <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                翌月末に自動解約。面倒な解約手続きは不要です。
+                当月末に自動解約。面倒な解約手続きは不要です。
               </p>
             </div>
           </div>

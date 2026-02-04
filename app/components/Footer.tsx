@@ -12,9 +12,9 @@ export default function Footer() {
               <span className="text-[#ff0066] ml-1 sm:ml-2">MOBILE</span>
             </div>
             <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
-              仕入れの相棒。音声込みで&quot;使うぶんだけ&quot;に最適化。
+              認証用SIMプラン。SMS・音声・データ対応。
               <br />
-              1GB/月880円・音声＋SMS込み。
+              50回線以上¥3,300 / 50回線未満¥3,600（1回払い）
             </p>
             <div className="mt-4 text-white/60 text-xs sm:text-sm">
               <p>合同会社ピーチ（VERSUS MOBILE運営）</p>
