@@ -35,10 +35,10 @@ export type ApplicationStatus = 'draft' | 'submitted' | 'processing' | 'complete
 export type LineStatus = 'not_opened' | 'opened' | 'shipped' | 'waiting_return' | 'returned' | 'canceled'
 export type TagType = 'sim_location' | 'spare'
 
-// プラン料金
+// プラン料金（認証用SIM）
 export const PLAN_PRICES = {
-  '3month-50plus': 4200,
-  '3month-under50': 4600,
+  'auth-50plus': 3300,
+  'auth-under50': 3600,
 } as const
 
 export type PlanType = keyof typeof PLAN_PRICES

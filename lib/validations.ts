@@ -42,22 +42,22 @@ export const step1Schema = z.discriminatedUnion('applicantType', [
   step1CorporateSchema,
 ])
 
-// ステップ2: プラン選択のバリデーション
+// ステップ2: プラン選択のバリデーション（認証用SIMプラン）
 export const step2Schema = z.object({
-  planType: z.enum(['3month-50plus', '3month-under50'], {
+  planType: z.enum(['auth-50plus', 'auth-under50'], {
     message: 'プランを選択してください',
   }),
   lineCount: z.number()
     .min(1, '回線数は1以上で入力してください'),
 }).superRefine((data, ctx) => {
-  if (data.planType === '3month-50plus' && data.lineCount < 50) {
+  if (data.planType === 'auth-50plus' && data.lineCount < 50) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: '50回線以上のプランを選択している場合、回線数は50以上である必要があります',
       path: ['lineCount'],
     })
   }
-  if (data.planType === '3month-under50' && data.lineCount >= 50) {
+  if (data.planType === 'auth-under50' && data.lineCount >= 50) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
       message: '50回線未満のプランを選択している場合、回線数は50未満である必要があります',

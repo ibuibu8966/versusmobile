@@ -50,23 +50,20 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight px-2">
-              <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block">仕入れの相棒。</span>
+              <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block">認証の相棒。</span>
               <span className="text-[#ff0066] neon-text animate-neon-pulse block mt-2">
-                音声込みで
+                SMS・音声・データ
               </span>
-              <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block mt-2">&quot;使うぶんだけ&quot;に</span>
-              <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block">最適化。</span>
+              <span className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block mt-2">すべて対応。</span>
             </h1>
 
             <p className="text-lg sm:text-2xl md:text-3xl text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
-              <span className="text-[#ff3399] font-bold block sm:inline drop-shadow-[0_0_10px_rgba(255,51,153,0.8)]">1GB/月880円</span>
+              <span className="text-[#ff3399] font-bold block sm:inline drop-shadow-[0_0_10px_rgba(255,51,153,0.8)]">認証用SIM</span>
               <span className="mx-2 hidden sm:inline">・</span>
-              <span className="text-white block sm:inline mt-1 sm:mt-0">音声＋SMS込み</span>
+              <span className="text-white block sm:inline mt-1 sm:mt-0">1回払いでシンプル</span>
               <br className="my-2" />
-              <span className="text-white/80 text-base sm:text-xl block sm:inline">重い月は</span>
-              <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0 drop-shadow-[0_0_10px_rgba(255,51,153,0.8)]">100GB目安</span>
-              <span className="text-white/60 text-sm sm:text-lg block sm:inline">（10GB/3日）</span>
-              <span className="text-white/80 text-base sm:text-xl block sm:inline mt-1 sm:mt-0">で使い倒せる。</span>
+              <span className="text-white/80 text-base sm:text-xl block sm:inline">翌月末自動解約で</span>
+              <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0 drop-shadow-[0_0_10px_rgba(255,51,153,0.8)]">手続き不要</span>
             </p>
 
             {/* CTA Buttons */}
@@ -80,16 +77,15 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* 3-Month Pack Highlight - ネオン版 */}
+            {/* 認証用SIMプラン - ネオン版 */}
             <div className="relative bg-black/60 border-2 border-[#ff0066] rounded-2xl sm:rounded-3xl p-6 sm:p-10 max-w-5xl mx-auto neon-border backdrop-blur-md">
               {/* 装飾的なコーナー */}
               <div className="absolute top-0 left-0 w-12 h-12 sm:w-20 sm:h-20 border-t-2 border-l-2 sm:border-t-4 sm:border-l-4 border-[#ff3399] rounded-tl-2xl sm:rounded-tl-3xl" style={{boxShadow: '0 0 10px #ff3399, 0 0 20px #ff3399'}}></div>
               <div className="absolute bottom-0 right-0 w-12 h-12 sm:w-20 sm:h-20 border-b-2 border-r-2 sm:border-b-4 sm:border-r-4 border-[#ff3399] rounded-br-2xl sm:rounded-br-3xl" style={{boxShadow: '0 0 10px #ff3399, 0 0 20px #ff3399'}}></div>
 
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#ff3399] mb-4 sm:mb-6 neon-text px-4">
-                <span className="block">事務手数料込み・</span>
-                <span className="block">3ヶ月パック</span>
-                <span className="block text-base sm:text-xl text-white/80 mt-2" style={{textShadow: 'none'}}>（音声＋SMS）</span>
+                <span className="block">認証用SIMプラン</span>
+                <span className="block text-base sm:text-xl text-white/80 mt-2" style={{textShadow: 'none'}}>（SMS・音声・データ対応）</span>
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 text-left px-2">
@@ -97,21 +93,21 @@ export default function HomePage() {
                   <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-gradient-to-r from-[#ff0066] to-[#ff3399] text-black text-xs font-bold px-3 py-1 rounded-full" style={{boxShadow: '0 0 10px #ff0066'}}>
                     お得
                   </div>
-                  <div className="text-[#ff3399] text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">50回線以上の一括申込</div>
+                  <div className="text-[#ff3399] text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">50回線以上</div>
                   <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-3">
-                    <span className="text-[#ff0066] neon-text">¥4,200</span>
+                    <span className="text-[#ff0066] neon-text">¥3,300</span>
                     <span className="text-base sm:text-xl text-white/60">/回線</span>
                   </div>
-                  <div className="text-white/80 text-xs sm:text-sm">3ヶ月分・税込</div>
+                  <div className="text-white/80 text-xs sm:text-sm">1回払い・税込</div>
                 </div>
 
                 <div className="relative bg-black/70 rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-[#ff0066]/60 neon-box-hover transition-all duration-300 transform hover:scale-105">
                   <div className="text-[#ff3399] text-xs sm:text-sm mb-2 sm:mb-3 font-semibold">50回線未満</div>
                   <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 sm:mb-3">
-                    <span className="text-[#ff0066] neon-text">¥4,600</span>
+                    <span className="text-[#ff0066] neon-text">¥3,600</span>
                     <span className="text-base sm:text-xl text-white/60">/回線</span>
                   </div>
-                  <div className="text-white/80 text-xs sm:text-sm">3ヶ月分・税込</div>
+                  <div className="text-white/80 text-xs sm:text-sm">1回払い・税込</div>
                 </div>
               </div>
 
@@ -122,6 +118,12 @@ export default function HomePage() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     SIM登録・個別配送込み
+                  </span>
+                  <span className="flex items-center">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#ff0066] mr-2 drop-shadow-[0_0_5px_#ff0066]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    翌月末自動解約
                   </span>
                 </p>
               </div>
@@ -161,13 +163,13 @@ export default function HomePage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">音声通話込み</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">認証に特化</h3>
               <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                すべてのプランに音声通話＋SMSが標準搭載。データ専用SIMではありません。定額通話オプションも充実。
+                SMS認証・音声認証・アプリ認証など、各種認証用途に最適化されたSIMカード。
               </p>
             </div>
 
@@ -188,9 +190,9 @@ export default function HomePage() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">選べる設計</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">1回払い</h3>
               <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                自動最適化ではなく、容量を自分で選ぶスタイル。使わない月は最小限、使う月は大容量に。無駄なく使える。
+                月額料金なし。最初の1回払いのみで、追加料金は一切かかりません。
               </p>
             </div>
 
@@ -207,13 +209,13 @@ export default function HomePage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">請求シンプル</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">自動解約</h3>
               <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                基本料は月次、従量分は翌々月合算。明快な料金体系。
+                翌月末に自動解約。面倒な解約手続きは不要です。
               </p>
             </div>
           </div>

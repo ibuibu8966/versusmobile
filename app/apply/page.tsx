@@ -296,8 +296,8 @@ export default function ApplyPage() {
   // ステップ2の入力チェック
   const isStep2Valid = () => {
     if (!formData.planType || !formData.lineCount) return false
-    if (formData.planType === '3month-50plus' && formData.lineCount < 50) return false
-    if (formData.planType === '3month-under50' && formData.lineCount >= 50) return false
+    if (formData.planType === 'auth-50plus' && formData.lineCount < 50) return false
+    if (formData.planType === 'auth-under50' && formData.lineCount >= 50) return false
     return true
   }
 
@@ -930,38 +930,54 @@ export default function ApplyPage() {
                 <h2 className="text-2xl font-bold text-white mb-6">プラン選択</h2>
 
                 <div className="space-y-6">
-                  {/* 3ヶ月パック選択 */}
+                  {/* 認証用SIMプラン選択 */}
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-4">3ヶ月パック</h3>
+                    <h3 className="text-xl font-semibold text-white mb-4">認証用SIMプラン</h3>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                       <button
                         type="button"
-                        onClick={() => updateFormData({ planType: '3month-50plus', lineCount: 50 })}
+                        onClick={() => updateFormData({ planType: 'auth-50plus', lineCount: 50 })}
                         className={`p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
-                          formData.planType === '3month-50plus'
+                          formData.planType === 'auth-50plus'
                             ? 'border-[#ff0066] bg-[#ff0066]/20'
                             : 'border-white/20 bg-white/5 hover:border-white/40'
                         }`}
                       >
                         <div className="text-lg font-bold text-white mb-2">50回線以上</div>
-                        <div className="text-3xl font-bold text-[#ff0066] mb-2">¥4,200<span className="text-lg text-white/60">/回線</span></div>
-                        <div className="text-sm text-white/60">税込</div>
+                        <div className="text-3xl font-bold text-[#ff0066] mb-2">¥3,300<span className="text-lg text-white/60">/回線</span></div>
+                        <div className="text-sm text-white/60">1回払い・税込</div>
                       </button>
 
                       <button
                         type="button"
-                        onClick={() => updateFormData({ planType: '3month-under50', lineCount: 1 })}
+                        onClick={() => updateFormData({ planType: 'auth-under50', lineCount: 1 })}
                         className={`p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
-                          formData.planType === '3month-under50'
+                          formData.planType === 'auth-under50'
                             ? 'border-[#ff0066] bg-[#ff0066]/20'
                             : 'border-white/20 bg-white/5 hover:border-white/40'
                         }`}
                       >
                         <div className="text-lg font-bold text-white mb-2">50回線未満</div>
-                        <div className="text-3xl font-bold text-[#ff0066] mb-2">¥4,600<span className="text-lg text-white/60">/回線</span></div>
-                        <div className="text-sm text-white/60">税込</div>
+                        <div className="text-3xl font-bold text-[#ff0066] mb-2">¥3,600<span className="text-lg text-white/60">/回線</span></div>
+                        <div className="text-sm text-white/60">1回払い・税込</div>
                       </button>
+                    </div>
+
+                    {/* 注意事項 */}
+                    <div className="mb-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
+                      <div className="flex items-start gap-3">
+                        <svg className="w-5 h-5 text-yellow-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                        <div>
+                          <p className="text-yellow-500 font-semibold mb-1">ご利用上の注意</p>
+                          <ul className="text-white/70 text-sm space-y-1">
+                            <li>・MNP（番号ポータビリティ）は転入・転出ともに不可です</li>
+                            <li>・お申込み月の翌月末に自動的に解約となります</li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
 
                     {/* 回線数入力 */}
@@ -969,10 +985,10 @@ export default function ApplyPage() {
                       <div className="mt-6">
                         <label className="block text-white/80 mb-2">
                           回線数<span className="text-red-400">*</span>
-                          {formData.planType === '3month-50plus' && (
+                          {formData.planType === 'auth-50plus' && (
                             <span className="text-sm text-white/60 ml-2">（50回線以上で入力してください）</span>
                           )}
-                          {formData.planType === '3month-under50' && (
+                          {formData.planType === 'auth-under50' && (
                             <span className="text-sm text-white/60 ml-2">（50回線未満で入力してください）</span>
                           )}
                         </label>
@@ -980,8 +996,8 @@ export default function ApplyPage() {
                           type="number"
                           value={formData.lineCount || ''}
                           onChange={(e) => updateFormData({ lineCount: parseInt(e.target.value) || 0 })}
-                          min={formData.planType === '3month-50plus' ? 50 : 1}
-                          max={formData.planType === '3month-under50' ? 49 : undefined}
+                          min={formData.planType === 'auth-50plus' ? 50 : 1}
+                          max={formData.planType === 'auth-under50' ? 49 : undefined}
                           className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-[#ff0066] transition-colors"
                           placeholder="回線数を入力"
                           required
@@ -997,7 +1013,7 @@ export default function ApplyPage() {
                           <div className="text-3xl font-bold text-[#ff0066] mb-2">
                             {formData.lineCount}回線 × ¥{PLAN_PRICES[formData.planType].toLocaleString()} = ¥{(formData.lineCount * PLAN_PRICES[formData.planType]).toLocaleString()}
                           </div>
-                          <div className="text-sm text-white/60">※事務手数料込み</div>
+                          <div className="text-sm text-white/60">※SIM登録・配送料込み</div>
                         </div>
                       </div>
                     )}
@@ -1301,17 +1317,22 @@ export default function ApplyPage() {
                     <div className="space-y-2 text-white/80">
                       <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-white/60">プラン</span>
-                        <span>{formData.planType === '3month-50plus' ? '3ヶ月パック（50回線以上）' : '3ヶ月パック（50回線未満）'}</span>
+                        <span>{formData.planType === 'auth-50plus' ? '認証用SIM（50回線以上）' : '認証用SIM（50回線未満）'}</span>
                       </div>
                       <div className="flex justify-between py-2 border-b border-white/10">
                         <span className="text-white/60">回線数</span>
                         <span>{formData.lineCount}回線</span>
+                      </div>
+                      <div className="flex justify-between py-2 border-b border-white/10">
+                        <span className="text-white/60">解約</span>
+                        <span>翌月末自動解約</span>
                       </div>
                       <div className="flex justify-between py-2 text-xl font-bold">
                         <span className="text-white">合計金額</span>
                         <span className="text-[#ff0066]">¥{formData.planType && formData.lineCount ? (PLAN_PRICES[formData.planType] * formData.lineCount).toLocaleString() : 0}</span>
                       </div>
                     </div>
+                    <p className="mt-3 text-xs text-yellow-500">※MNP（番号ポータビリティ）は不可です</p>
                     <button
                       onClick={() => setCurrentStep(2)}
                       className="mt-4 text-[#ff0066] hover:text-[#ff3399] text-sm"
