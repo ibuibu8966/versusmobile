@@ -63,7 +63,7 @@ export default function FAQ() {
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             <span className="text-white">よくある</span>
-            <span className="text-[#d4af37]">質問</span>
+            <span className="text-[#ff0066] neon-text">質問</span>
           </h2>
           <p className="text-white/60 text-sm sm:text-base md:text-lg px-4">
             お客様から寄せられるよくある質問にお答えします
@@ -74,7 +74,7 @@ export default function FAQ() {
           {faqData.map((faq, index) => (
             <div
               key={index}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden hover:border-[#d4af37]/50 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden hover:border-[#ff0066]/50 transition-all duration-300"
             >
               <button
                 onClick={() => toggleFAQ(index)}
@@ -84,7 +84,7 @@ export default function FAQ() {
                   {faq.question}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-[#d4af37] flex-shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 text-[#ff0066] flex-shrink-0 transition-transform duration-300 ${
                     openIndex === index ? 'rotate-180' : ''
                   }`}
                   fill="none"
@@ -114,7 +114,7 @@ export default function FAQ() {
           </p>
           <a
             href="mailto:peach.2023.7.19@gmail.com"
-            className="inline-flex items-center text-[#d4af37] hover:text-[#f0d970] font-semibold transition-colors duration-200"
+            className="inline-flex items-center text-[#ff0066] hover:text-[#ff3399] font-semibold transition-colors duration-200"
           >
             <svg
               className="w-5 h-5 mr-2"
