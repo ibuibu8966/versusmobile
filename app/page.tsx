@@ -50,20 +50,20 @@ export default function HomePage() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight px-2">
-              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block">認証の相棒。</span>
-              <span className="text-[#ff0066] neon-text animate-neon-pulse block mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]" style={{textShadow: '0 0 20px #ff0066, 0 2px 10px rgba(0,0,0,0.9)'}}>
+              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block" style={{WebkitTextStroke: '1px rgba(0,0,0,0.5)'}}>認証の相棒。</span>
+              <span className="text-[#ff0066] neon-text animate-neon-pulse block mt-2" style={{WebkitTextStroke: '2px black', textShadow: '0 0 20px #ff0066, 0 0 40px #ff0066'}}>
                 SMS・音声・データ
               </span>
-              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block mt-2">すべて対応。</span>
+              <span className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] block mt-2" style={{WebkitTextStroke: '1px rgba(0,0,0,0.5)'}}>すべて対応。</span>
             </h1>
 
             <p className="text-lg sm:text-2xl md:text-3xl text-white/90 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
-              <span className="text-[#ff3399] font-bold block sm:inline drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]" style={{textShadow: '0 0 10px #ff3399, 0 2px 8px rgba(0,0,0,0.9)'}}>認証用SIM</span>
+              <span className="text-[#ff3399] font-bold block sm:inline" style={{WebkitTextStroke: '1px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399'}}>認証用SIM</span>
               <span className="mx-2 hidden sm:inline drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">・</span>
               <span className="text-white block sm:inline mt-1 sm:mt-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">1回払いでシンプル</span>
               <br className="my-2" />
               <span className="text-white/80 text-base sm:text-xl block sm:inline drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">翌月末自動解約で</span>
-              <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]" style={{textShadow: '0 0 10px #ff3399, 0 2px 8px rgba(0,0,0,0.9)'}}>手続き不要</span>
+              <span className="text-[#ff3399] font-bold text-xl sm:text-2xl block sm:inline mt-1 sm:mt-0" style={{WebkitTextStroke: '1px black', textShadow: '0 0 15px #ff3399, 0 0 30px #ff3399'}}>手続き不要</span>
             </p>
 
             {/* CTA Buttons */}
