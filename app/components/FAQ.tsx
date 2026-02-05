@@ -34,7 +34,7 @@ const faqData: FAQItem[] = [
   },
   {
     question: '個人は何回線まで契約できますか？',
-    answer: '最大5回線までです。',
+    answer: '個人の方も回線数の上限はありません。',
   },
   {
     question: '法人の申込条件は？',
