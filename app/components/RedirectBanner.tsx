@@ -2,16 +2,17 @@
 
 import { usePathname } from 'next/navigation'
 
-export default function RedirectBanner() {
+export default function RedirectBanner({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
-  // adminページでは表示しない
+  // adminページはそのまま表示
   if (pathname.startsWith('/admin')) {
-    return null
+    return <>{children}</>
   }
 
+  // それ以外は移転メッセージのみ表示
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm">
+    <div className="min-h-screen bg-black flex items-center justify-center">
       <div className="text-center px-6 max-w-2xl">
         <div className="text-4xl sm:text-5xl font-bold mb-6">
           <span className="text-white">VERSUS</span>
